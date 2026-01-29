@@ -253,7 +253,7 @@
     
     <div class="container">
         <div class="main-info">
-            <div class="year-display"></div>
+            <div class="year-display">২০২৬</div>
             <p class="description">
                 হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) এর পবিত্র স্মরণে প্রধান দিবস উপলক্ষে ২০২৬ সালের সামাজিক চাঁদা ও তথ্য দেখতে নিচের বাটনে ক্লিক করুন।
             </p>
@@ -272,21 +272,5 @@
             <p>© ২০২৬ - সকল তথ্য সংরক্ষিত</p>
         </div>
     </footer>
-
-    <script>
-        // বাটনে ক্লিক করার সময় একটি এনিমেশন যোগ করা
-        document.querySelector('.enter-button').addEventListener('click', function(e) {
-            // যদি 2026.html ফাইল না থাকে, তাহলে একটি অ্যালার্ট দেখাবে
-            // বাস্তব ব্যবহারের সময় এই অংশটি সরিয়ে দিতে হবে
-            const link = this.getAttribute('href');
-            if(link === '2026.html') {
-                // এটি শুধু ডেমোর জন্য, বাস্তবে এই অংশটি প্রয়োজন নেই
-                e.preventDefault();
-                alert('২০২৬ সালের পৃষ্ঠায় রিডাইরেক্ট করা হচ্ছে।\n\nদ্রষ্টব্য: এটি একটি ডেমো, বাস্তবে 2026.html ফাইল তৈরি করে নিতে হবে।');
-                // বাস্তব ব্যবহারের জন্য উপরের alert() এবং return false সরিয়ে দিতে হবে
-                return false;
-            }
-        });
-    </script>
 </body>
 </html>
