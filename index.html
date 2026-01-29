@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শাহসূফি হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Noto Sans Bengali', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            direction: ltr;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #1a5f23, #2d8f3d);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .marquee-container {
+            background-color: #e8f5e9;
+            color: #1a5f23;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            border-bottom: 2px solid #2d8f3d;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .info-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #2d8f3d;
+        }
+        
+        .info-card h2 {
+            color: #1a5f23;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #e0e0e0;
+            font-size: 1.8rem;
+        }
+        
+        .info-card p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .address {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #2d8f3d;
+            margin-top: 20px;
+        }
+        
+        .buttons-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #2d8f3d;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+            background-color: #f0f9f0;
+        }
+        
+        .button-icon {
+            font-size: 2.5rem;
+            margin-right: 20px;
+            color: #2d8f3d;
+            width: 70px;
+            text-align: center;
+        }
+        
+        .button-text {
+            flex: 1;
+        }
+        
+        .button-text h3 {
+            color: #1a5f23;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        
+        .button-text p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* সোশ্যাল মিডিয়া সেকশন */
+        .social-section {
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .social-section h3 {
+            color: #1a5f23;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            display: inline-block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            width: 180px;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2d8f3d;
+        }
+        
+        .social-link.facebook:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .social-link.email:hover {
+            background-color: #fff8f0;
+        }
+        
+        .social-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a5f23;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background-color: #1a5f23;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #a5d6a7;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* পাসওয়ার্ড মোডাল */
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .modal-content h3 {
+            color: #1a5f23;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .password-input:focus {
+            border-color: #2d8f3d;
+            outline: none;
+        }
+        
+        .password-btn {
+            background-color: #2d8f3d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .password-btn:hover {
+            background-color: #1a5f23;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                flex-direction: column;
+            }
+            
+            .action-button {
+                padding: 20px;
+            }
+            
+            .button-icon {
+                font-size: 2rem;
+                width: 60px;
+            }
+            
+            .marquee-content {
+                font-size: 1rem;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 80%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .info-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .button-text h3 {
+                font-size: 1.4rem;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- হেডার সেকশন -->
+    <div class="header">
+        <p>উপমহাদেশের ইসলাম প্রচারক, অলিয়ে কামেল, হাযত রাওয়া, মুশকিল কোশা, শাহসূফি</p>
+        <h1>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</h1>
+    </div>
+    
+    <!-- মার্কি সেকশন -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            প্রধান দিবস: ২২শে মাঘ ৫ই ফেব্রুয়ারি ২০২৬ইং।    মহান এই আউলিয়ার ওরস শরীফ প্রতি বছর ৩০শে মাঘ ১৩ই ফেব্রুয়ারি পালিত হয়।
+        </div>
+    </div>
+    
+    <!-- মূল কন্টেন্ট -->
+    <div class="content">
+        <!-- তথ্য কার্ড -->
+        <div class="info-card">
+            <h2>জীবন বৃত্তান্ত</h2>
+            <p>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) ইয়েমেন থেকে আগত।</p>
+</p>এবং উনার সফর সঙ্গী আখূহু ইসলাম প্রচারক।</p>
+</p>১. হযরত সৈয়দ আফীউদ্দীন মিয়াজি</p>
+</p>২. হযরত সৈয়দ নজিমউদ্দীন মিয়াজি</p>
+</p>৩. হযরত সৈয়দ নূরউদ্দিন মিয়াজি</p>
+</p>উনারা ইসলামের বাণী প্রচার, সমাজ সংস্কার এবং আধ্যাত্মিক দিকনির্দেশনার মাধ্যমে অসংখ্য মানুষকে হেদায়াতের পথে নিয়ে আসেন।</p>
+            
+            <h2 style="margin-top: 25px;">ঠিকানা</h2>
+            <div class="address">
+                সৈয়দ পাড়া, পূর্ব সুয়াবিল<br>
+                ২নং ওয়ার্ড নাজিরহাট পৌরসভা<br>
+                ভূজপুর, ফটিকছড়ি<br>
+                চট্টগ্রাম, বাংলাদেশ
+            </div>
+            
+            <h2 style="margin-top: 25px;">প্রধান দিবস</h2>
+            <p>প্রতি বছর ৩০শে মাঘ ১৩ই ফেব্রুয়ারি তারিখে মহান এই আউলিয়ার ওরস শরীফ পালিত হয়। কিন্তু চলতি বছরে ১২ই ফেব্রুয়ারি ত্রয়োদশ জাতীয় সংসদ নির্বাচন অনুষ্ঠিত হওয়ায় ওরশ মোবারকের তারিখ পরিবর্তন করা হয়েছে।</p>
+        </div>
+        
+        <!-- বাটন কন্টেইনার -->
+        <div class="buttons-container">
+            <!-- যোগাযোগ বাটন -->
+            <a href="contact.html" class="action-button" id="contactButton">
+                <div class="button-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="button-text">
+                    <h3>যোগাযোগ করুন</h3>
+                    <p>মাজার কমিটির সাথে যোগাযোগের জন্য এখানে ক্লিক করুন। যেকোনো তথ্য বা সহযোগিতার জন্য আমাদের সাথে যোগাযোগ করতে পারেন।</p>
+                </div>
+            </a>
+            
+            <!-- সামাজিক চাঁদা বাটন -->
+            <a href="#" class="action-button" id="donationButton">
+                <div class="button-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="button-text">
+                    <h3>সামাজিক চাঁদা</h3>
+                    <p>প্রধান দিবসে সামাজিক চাঁদার তথ্য সংরক্ষিত।</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- সোশ্যাল মিডিয়া সেকশন -->
+    <div class="social-section">
+        <h3>আমাদের সাথে যোগাযোগ করুন</h3>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1782oy3C6t/" target="_blank" class="social-link facebook">
+                <div class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="social-text">ফেসবুক পেইজ</div>
+            </a>
+            
+            <a href="mailto:hswusmanagement@gmail.com" class="social-link email">
+                <div class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="social-text">ইমেইল করুন</div>
+                <small>hswusmanagement@gmail.com</small>
+            </a>
+        </div>
+    </div>
+    
+    <!-- ফুটার -->
+    <div class="footer">
+        <p>© ২০২৬ - হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) ওরশ পরিচালনা কমিটি।</p>
+        <p>এই ওয়েবসাইটটি মাজার শরীফের তথ্য ও কার্যক্রম সম্পর্কে সাধারণ তথ্য প্রদানের জন্য তৈরি করা হয়েছে।</p>
+    </div>
+    
+    <!-- পাসওয়ার্ড মোডাল -->
+    <div class="password-modal" id="passwordModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h3>পাসওয়ার্ড প্রয়োজন</h3>
+            <p>সামাজিক চাঁদা পেইজে প্রবেশ করতে পাসওয়ার্ড দিন</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="পাসওয়ার্ড লিখুন">
+            <button class="password-btn" id="submitPassword">সাবমিট করুন</button>
+            <div class="error-message" id="errorMessage">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</div>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">শুধু দায়িত্বপ্রাপ্ত কর্মকর্তাদের জন্য</p>
+        </div>
+    </div>
+    
+    <script>
+        // মার্কি এনিমেশনের জন্য জাভাস্ক্রিপ্ট
+        document.addEventListener('DOMContentLoaded', function() {
+            const marqueeContent = document.querySelector('.marquee-content');
+            
+            // মার্কি কন্টেন্ট ডুপ্লিকেট করে একটানা চলার জন্য
+            const contentText = marqueeContent.textContent;
+            marqueeContent.innerHTML = contentText + ' ' + contentText + ' ' + contentText;
+            
+            // পাসওয়ার্ড মোডাল এলিমেন্ট
+            const passwordModal = document.getElementById('passwordModal');
+            const passwordInput = document.getElementById('passwordInput');
+            const submitPasswordBtn = document.getElementById('submitPassword');
+            const errorMessage = document.getElementById('errorMessage');
+            const closeModalBtn = document.getElementById('closeModal');
+            const donationButton = document.getElementById('donationButton');
+            const contactButton = document.getElementById('contactButton');
+            
+            // সঠিক পাসওয়ার্ড
+            const correctPassword = "2026";
+            
+            // সামাজিক চাঁদা বাটনে ক্লিক করলে
+            donationButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                passwordModal.style.display = 'flex';
+                passwordInput.focus();
+            });
+            
+            // মোডাল বন্ধ করবে
+            closeModalBtn.addEventListener('click', function() {
+                passwordModal.style.display = 'none';
+                errorMessage.style.display = 'none';
+                passwordInput.value = '';
+            });
+            
+            // বাইরে ক্লিক করলে মোডাল বন্ধ হবে
+            window.addEventListener('click', function(e) {
+                if (e.target === passwordModal) {
+                    passwordModal.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                    passwordInput.value = '';
+                }
+            });
+            
+            // পাসওয়ার্ড সাবমিট করবে
+            submitPasswordBtn.addEventListener('click', function() {
+                const enteredPassword = passwordInput.value;
+                
+                if (enteredPassword === correctPassword) {
+                    // পাসওয়ার্ড সঠিক হলে hswus.html ফাইলে নিয়ে যাবে
+                    window.location.href = 'hswus.html';
+                } else {
+                    // ভুল পাসওয়ার্ড হলে
+                    errorMessage.style.display = 'block';
+                    passwordInput.style.borderColor = '#e74c3c';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                    
+                    // ৩ সেকেন্ড পর error মেসেজ hide করবে
+                    setTimeout(function() {
+                        errorMessage.style.display = 'none';
+                        passwordInput.style.borderColor = '#ddd';
+                    }, 3000);
+                }
+            });
+            
+            // Enter কি চাপলে পাসওয়ার্ড সাবমিট হবে
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitPasswordBtn.click();
+                }
+            });
+            
+            // যোগাযোগ বাটন ক্লিকের জন্য ইভেন্ট লিসেনার
+            contactButton.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === 'contact.html') {
+                    // আসলে এই ফাইলটি তৈরি করা হলে এই এলার্ট দরকার হবে না
+                    if (!confirm('এই লিঙ্কটি "contact.html" ফাইলটি খুলতে চায়। ডেমোতে শুধু এলার্ট দেখানো হচ্ছে।')) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
