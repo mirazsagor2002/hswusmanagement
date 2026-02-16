@@ -718,6 +718,238 @@
             pointer-events: none;
         }
 
+        /* প্রিন্ট কন্ট্রোল প্যানেল */
+        .print-control-panel {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .print-control-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .print-control-item label {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 100px;
+        }
+
+        .print-control-item select, 
+        .print-control-item input {
+            padding: 8px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            min-width: 150px;
+        }
+
+        .print-control-item input {
+            width: 80px;
+        }
+
+        .print-now-btn {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .print-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 95, 122, 0.4);
+        }
+
+        /* প্রিন্ট স্টাইল - সম্পূর্ণ নতুন করে ডিজাইন করা হয়েছে */
+        @media print {
+            /* পৃষ্ঠার সাইজ কন্ট্রোল */
+            @page {
+                size: auto;
+                margin: 0.5in;
+            }
+
+            /* সব এলিমেন্ট লুকান */
+            body * {
+                visibility: hidden;
+            }
+
+            /* শুধুমাত্র প্রিন্ট এরিয়া দেখান */
+            .print-area, .print-area * {
+                visibility: visible;
+            }
+
+            /* প্রিন্ট এরিয়া পজিশন */
+            .print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            /* প্রিন্ট কন্ট্রোল প্যানেল লুকান */
+            .print-control-panel {
+                display: none;
+            }
+
+            /* প্রিন্ট বাটন লুকান */
+            .print-btn {
+                display: none;
+            }
+
+            /* সার্চ লুকান */
+            .search-container {
+                display: none;
+            }
+
+            /* হেডার স্টাইল */
+            .print-area .print-header {
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #333;
+            }
+
+            .print-area .print-header h2 {
+                font-size: 18pt;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .print-area .print-header .print-date {
+                font-size: 12pt;
+                color: #333;
+            }
+
+            /* টেবিল স্টাইল */
+            .print-area table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11pt;
+                page-break-inside: auto;
+            }
+
+            .print-area thead {
+                display: table-header-group;
+                background: #f0f0f0 !important;
+                color: #000 !important;
+            }
+
+            .print-area tbody {
+                display: table-row-group;
+            }
+
+            .print-area tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            .print-area th {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                font-weight: bold;
+                padding: 8px;
+                border: 1px solid #999;
+                text-align: left;
+            }
+
+            .print-area td {
+                padding: 6px 8px;
+                border: 1px solid #999;
+                color: #000 !important;
+            }
+
+            /* পরিশোধ স্ট্যাটাস */
+            .print-area .paid, .print-area .pending {
+                color: #000 !important;
+            }
+
+            .print-area .paid::before {
+                content: "✓ ";
+                color: #2d8c5e;
+            }
+
+            .print-area .pending::before {
+                content: "✗ ";
+                color: #c57c1a;
+            }
+
+            /* সারাংশ স্টাইল */
+            .print-area .print-summary {
+                margin-top: 20px;
+                padding: 15px;
+                background: #f9f9f9;
+                border: 1px solid #999;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 10px;
+            }
+
+            .print-area .print-summary-item {
+                padding: 8px;
+                border-left: 3px solid #1a5f7a;
+            }
+
+            .print-area .print-summary-label {
+                font-weight: bold;
+                color: #333;
+                font-size: 10pt;
+            }
+
+            .print-area .print-summary-value {
+                font-size: 12pt;
+                font-weight: bold;
+                color: #1a5f7a;
+            }
+
+            /* পৃষ্ঠা নম্বর */
+            .print-area .page-number {
+                text-align: center;
+                font-size: 9pt;
+                margin-top: 20px;
+                color: #666;
+            }
+
+            /* ফুটার */
+            .print-area .print-footer {
+                text-align: center;
+                margin-top: 20px;
+                padding-top: 10px;
+                border-top: 1px solid #999;
+                font-size: 9pt;
+                color: #666;
+            }
+        }
+
+        .highlight {
+            background-color: rgba(212, 175, 55, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .buttons-grid {
                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -748,6 +980,20 @@
             
             .summary {
                 grid-template-columns: 1fr;
+            }
+
+            .print-control-panel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .print-control-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .print-control-item label {
+                min-width: auto;
             }
         }
 
@@ -786,44 +1032,6 @@
                 font-size: 0.9rem;
             }
         }
-
-        @media print {
-            body * {
-                visibility: hidden;
-                background: white;
-                color: black;
-            }
-            
-            .table-container, .table-container * {
-                visibility: visible;
-            }
-            
-            .table-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                box-shadow: none;
-                background: white;
-                border: none;
-            }
-            
-            .print-btn, .search-container {
-                display: none;
-            }
-            
-            .summary {
-                background: #f5f5f5;
-                border: 1px solid #ddd;
-            }
-        }
-
-        .highlight {
-            background-color: rgba(212, 175, 55, 0.3);
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -839,6 +1047,34 @@
             <div class="date">২২শে মাঘ ৫ই ফেব্রুয়ারী ২০২৬ইং</div>
             <div class="chanda-text">সামাজিক চাঁদার হিসাব</div>
         </header>
+
+        <!-- প্রিন্ট কন্ট্রোল প্যানেল -->
+        <div class="print-control-panel" id="printControlPanel">
+            <div class="print-control-item">
+                <label><i class="fas fa-file-pdf"></i> প্রিন্ট সাইজ:</label>
+                <select id="printSize">
+                    <option value="a4">A4 (সাধারণ)</option>
+                    <option value="a3">A3 (বড়)</option>
+                    <option value="legal">Legal</option>
+                    <option value="letter">Letter</option>
+                </select>
+            </div>
+            <div class="print-control-item">
+                <label><i class="fas fa-rows"></i> প্রতি পৃষ্ঠায় সারি:</label>
+                <input type="number" id="rowsPerPage" value="25" min="10" max="100" step="5">
+            </div>
+            <div class="print-control-item">
+                <label><i class="fas fa-font"></i> ফন্ট সাইজ:</label>
+                <select id="fontSize">
+                    <option value="9pt">ছোট</option>
+                    <option value="11pt" selected>মাঝারি</option>
+                    <option value="13pt">বড়</option>
+                </select>
+            </div>
+            <button class="print-now-btn" id="printNowBtn">
+                <i class="fas fa-print"></i> প্রিন্ট করুন
+            </button>
+        </div>
 
         <div class="buttons-grid">
             <button class="area-btn" data-area="সৈয়দ পাড়া">
@@ -1186,6 +1422,13 @@
             const expenseSearchInput = document.getElementById('expenseSearchInput');
             const expenseNoResults = document.getElementById('expenseNoResults');
             
+            // প্রিন্ট কন্ট্রোল এলিমেন্ট
+            const printControlPanel = document.getElementById('printControlPanel');
+            const printNowBtn = document.getElementById('printNowBtn');
+            const printSize = document.getElementById('printSize');
+            const rowsPerPage = document.getElementById('rowsPerPage');
+            const fontSize = document.getElementById('fontSize');
+            
             // Google Sheets URL (CSV format)
             const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6e85SNjq6MWpbd2f9wgFdUBqpQ6lx3FtLxJbWW72rb_elJ9gLXNhRDyELcfVqXYr3_hLxEtZNlrZf/pub?output=csv';
             
@@ -1202,6 +1445,9 @@
             let currentFilteredCashData = [];
             let currentFilteredIncomeData = [];
             let currentFilteredExpenseData = [];
+            
+            let currentTableType = 'chanda'; // 'chanda', 'rashid', 'cash', 'income', 'expense'
+            let currentAreaName = 'সৈয়দ পাড়া';
             
             // Convert English digits to Bengali
             function toBengaliNumber(number) {
@@ -1225,10 +1471,37 @@
                 }).join('');
             }
             
-            // Format currency display
+            // Format number with commas for thousands separator
+            function formatNumberWithCommas(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            
+            // Format number with Bengali commas for thousands separator
+            function formatBengaliNumberWithCommas(number) {
+                const numStr = number.toString();
+                const parts = numStr.split('.');
+                let integerPart = parts[0];
+                let decimalPart = parts.length > 1 ? parts[1] : '';
+                
+                // Add commas for thousands separator
+                integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                
+                // Convert to Bengali digits
+                integerPart = toBengaliNumber(integerPart);
+                
+                // Convert decimal part if exists
+                if (decimalPart) {
+                    decimalPart = toBengaliNumber(decimalPart);
+                    return integerPart + '.' + decimalPart;
+                }
+                
+                return integerPart;
+            }
+            
+            // Format currency display with commas
             function formatCurrency(amount) {
                 const num = parseInt(amount) || 0;
-                return toBengaliNumber(num) + ' টাকা';
+                return formatBengaliNumberWithCommas(num) + ' টাকা';
             }
             
             // Highlight search term in text
@@ -1252,14 +1525,20 @@
                     expenseTableContainer.style.display = 'none';
                     
                     if (area === "রশিদ বই") {
+                        currentTableType = 'rashid';
                         showRashidData();
                     } else if (area === "ক্যাশ টেবিল") {
+                        currentTableType = 'cash';
                         showCashData();
                     } else if (area === "আয়-হিসাব") {
+                        currentTableType = 'income';
                         showIncomeData();
                     } else if (area === "ব্যয়-হিসাব") {
+                        currentTableType = 'expense';
                         showExpenseData();
                     } else {
+                        currentTableType = 'chanda';
+                        currentAreaName = area;
                         showChandaAreaData(area);
                     }
                     
@@ -1273,25 +1552,393 @@
                 });
             });
 
+            // প্রিন্ট নাও বাটন
+            printNowBtn.addEventListener('click', function() {
+                printWithSettings();
+            });
+
+            // প্রিন্ট ফাংশন
+            function printWithSettings() {
+                // Create print area
+                const printArea = document.createElement('div');
+                printArea.className = 'print-area';
+                
+                // Add header
+                const header = document.createElement('div');
+                header.className = 'print-header';
+                
+                let title = '';
+                if (currentTableType === 'chanda') {
+                    title = `${currentAreaName} - চাঁদার তালিকা`;
+                } else if (currentTableType === 'rashid') {
+                    title = 'রশিদ বই তালিকা';
+                } else if (currentTableType === 'cash') {
+                    title = 'ক্যাশ টেবিল তালিকা';
+                } else if (currentTableType === 'income') {
+                    title = 'আয়-হিসাব তালিকা';
+                } else if (currentTableType === 'expense') {
+                    title = 'ব্যয়-হিসাব তালিকা';
+                }
+                
+                header.innerHTML = `
+                    <h2>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</h2>
+                    <h3>${title}</h3>
+                    <div class="print-date">তারিখ: ২২শে মাঘ ৫ই ফেব্রুয়ারী ২০২৬ইং</div>
+                `;
+                printArea.appendChild(header);
+                
+                // Add table
+                const table = document.createElement('table');
+                
+                // Clone thead from current table
+                let theadHTML = '';
+                let tbodyHTML = '';
+                
+                if (currentTableType === 'chanda') {
+                    theadHTML = `
+                        <thead>
+                            <tr>
+                                <th>ক্রমিক নং</th>
+                                <th>নাম</th>
+                                <th>চাঁদা</th>
+                                <th>উসুল</th>
+                                <th>হাদিয়া</th>
+                                <th>পরিশোধ</th>
+                            </tr>
+                        </thead>
+                    `;
+                    
+                    const dataToPrint = currentFilteredChandaData.length > 0 ? currentFilteredChandaData : currentChandaData;
+                    dataToPrint.forEach((person, index) => {
+                        const chandaNum = parseInt(person.chanda) || 0;
+                        const collectionNum = parseInt(person.collection) || 0;
+                        const hadiyaNum = parseInt(person.hadiya) || 0;
+                        
+                        tbodyHTML += `
+                            <tr>
+                                <td>${toBengaliNumber(index + 1)}</td>
+                                <td>${person.name}</td>
+                                <td>${formatCurrency(chandaNum)}</td>
+                                <td>${formatCurrency(collectionNum)}</td>
+                                <td>${formatCurrency(hadiyaNum)}</td>
+                                <td class="${person.paid ? 'paid' : 'pending'}">
+                                    ${person.paid ? 'পরিশোধিত' : 'বাকি'}
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add summary
+                    let totalChanda = 0, totalCollection = 0, totalHadiya = 0, paidCount = 0;
+                    dataToPrint.forEach(person => {
+                        totalChanda += parseInt(person.chanda) || 0;
+                        totalCollection += parseInt(person.collection) || 0;
+                        totalHadiya += parseInt(person.hadiya) || 0;
+                        if (person.paid) paidCount++;
+                    });
+                    
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'print-summary';
+                    summaryDiv.innerHTML = `
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট চাঁদা:</div>
+                            <div class="print-summary-value">${formatCurrency(totalChanda)}</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট উসুল:</div>
+                            <div class="print-summary-value">${formatCurrency(totalCollection)}</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট হাদিয়া:</div>
+                            <div class="print-summary-value">${formatCurrency(totalHadiya)}</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">পরিশোধিত:</div>
+                            <div class="print-summary-value">${toBengaliNumber(paidCount)}টি</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">বাকি:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length - paidCount)}টি</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length)}টি</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        printArea.appendChild(summaryDiv);
+                    }, 100);
+                    
+                } else if (currentTableType === 'rashid') {
+                    theadHTML = `
+                        <thead>
+                            <tr>
+                                <th>ক্রমিক নং</th>
+                                <th>নাম</th>
+                                <th>রশিদ বই নং</th>
+                                <th>টাকা</th>
+                                <th>ঠিকানা</th>
+                            </tr>
+                        </thead>
+                    `;
+                    
+                    const dataToPrint = currentFilteredRashidData.length > 0 ? currentFilteredRashidData : allRashidData;
+                    dataToPrint.forEach((person, index) => {
+                        const amountNum = parseInt(person.amount) || 0;
+                        
+                        tbodyHTML += `
+                            <tr>
+                                <td>${toBengaliNumber(index + 1)}</td>
+                                <td>${person.name}</td>
+                                <td>${person.rashid_no || ''}</td>
+                                <td>${formatCurrency(amountNum)}</td>
+                                <td>${person.address || ''}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add summary
+                    let totalAmount = 0;
+                    dataToPrint.forEach(person => {
+                        totalAmount += parseInt(person.amount) || 0;
+                    });
+                    
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'print-summary';
+                    summaryDiv.innerHTML = `
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট রশিদ:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length)}টি</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট টাকা:</div>
+                            <div class="print-summary-value">${formatCurrency(totalAmount)}</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        printArea.appendChild(summaryDiv);
+                    }, 100);
+                    
+                } else if (currentTableType === 'cash') {
+                    theadHTML = `
+                        <thead>
+                            <tr>
+                                <th>ক্রমিক নং</th>
+                                <th>নাম</th>
+                                <th>টাকা</th>
+                                <th>ঠিকানা</th>
+                            </tr>
+                        </thead>
+                    `;
+                    
+                    const dataToPrint = currentFilteredCashData.length > 0 ? currentFilteredCashData : allCashData;
+                    dataToPrint.forEach((person, index) => {
+                        const amountNum = parseInt(person.amount) || 0;
+                        
+                        tbodyHTML += `
+                            <tr>
+                                <td>${toBengaliNumber(index + 1)}</td>
+                                <td>${person.name}</td>
+                                <td>${formatCurrency(amountNum)}</td>
+                                <td>${person.address || ''}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add summary
+                    let totalAmount = 0;
+                    dataToPrint.forEach(person => {
+                        totalAmount += parseInt(person.amount) || 0;
+                    });
+                    
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'print-summary';
+                    summaryDiv.innerHTML = `
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট ব্যক্তি:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length)} জন</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট টাকা:</div>
+                            <div class="print-summary-value">${formatCurrency(totalAmount)}</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        printArea.appendChild(summaryDiv);
+                    }, 100);
+                    
+                } else if (currentTableType === 'income') {
+                    theadHTML = `
+                        <thead>
+                            <tr>
+                                <th>ক্রমিক নং</th>
+                                <th>বিবরণ</th>
+                                <th>টাকা</th>
+                            </tr>
+                        </thead>
+                    `;
+                    
+                    const dataToPrint = currentFilteredIncomeData.length > 0 ? currentFilteredIncomeData : allIncomeData;
+                    dataToPrint.forEach((item, index) => {
+                        const amountNum = parseInt(item.amount) || 0;
+                        
+                        tbodyHTML += `
+                            <tr>
+                                <td>${toBengaliNumber(index + 1)}</td>
+                                <td>${item.description || ''}</td>
+                                <td>${formatCurrency(amountNum)}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add summary
+                    let totalAmount = 0;
+                    dataToPrint.forEach(item => {
+                        totalAmount += parseInt(item.amount) || 0;
+                    });
+                    
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'print-summary';
+                    summaryDiv.innerHTML = `
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট আয়ের আইটেম:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length)}টি</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট আয়:</div>
+                            <div class="print-summary-value">${formatCurrency(totalAmount)}</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        printArea.appendChild(summaryDiv);
+                    }, 100);
+                    
+                } else if (currentTableType === 'expense') {
+                    theadHTML = `
+                        <thead>
+                            <tr>
+                                <th>ক্রমিক নং</th>
+                                <th>বিবরণ</th>
+                                <th>টাকা</th>
+                            </tr>
+                        </thead>
+                    `;
+                    
+                    const dataToPrint = currentFilteredExpenseData.length > 0 ? currentFilteredExpenseData : allExpenseData;
+                    dataToPrint.forEach((item, index) => {
+                        const amountNum = parseInt(item.amount) || 0;
+                        
+                        tbodyHTML += `
+                            <tr>
+                                <td>${toBengaliNumber(index + 1)}</td>
+                                <td>${item.description || ''}</td>
+                                <td>${formatCurrency(amountNum)}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add summary
+                    let totalAmount = 0;
+                    dataToPrint.forEach(item => {
+                        totalAmount += parseInt(item.amount) || 0;
+                    });
+                    
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'print-summary';
+                    summaryDiv.innerHTML = `
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট ব্যয়ের আইটেম:</div>
+                            <div class="print-summary-value">${toBengaliNumber(dataToPrint.length)}টি</div>
+                        </div>
+                        <div class="print-summary-item">
+                            <div class="print-summary-label">মোট ব্যয়:</div>
+                            <div class="print-summary-value">${formatCurrency(totalAmount)}</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        printArea.appendChild(summaryDiv);
+                    }, 100);
+                }
+                
+                table.innerHTML = theadHTML + '<tbody>' + tbodyHTML + '</tbody>';
+                printArea.appendChild(table);
+                
+                // Add footer
+                const footer = document.createElement('div');
+                footer.className = 'print-footer';
+                footer.innerHTML = `
+                    <div>&copy; হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) এর ওরশ পরিচালনা কমিটি</div>
+                    <div class="page-number">পৃষ্ঠা - ১</div>
+                `;
+                printArea.appendChild(footer);
+                
+                // Add to body
+                document.body.appendChild(printArea);
+                
+                // Set page size based on selection
+                let pageSize = '';
+                switch(printSize.value) {
+                    case 'a3': pageSize = 'size: A3;'; break;
+                    case 'legal': pageSize = 'size: legal;'; break;
+                    case 'letter': pageSize = 'size: letter;'; break;
+                    default: pageSize = 'size: A4;';
+                }
+                
+                // Create style for print
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @page {
+                        ${pageSize}
+                        margin: 0.5in;
+                    }
+                    .print-area table {
+                        font-size: ${fontSize.value};
+                    }
+                    .print-area tbody tr {
+                        page-break-inside: avoid;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Print
+                window.print();
+                
+                // Clean up
+                setTimeout(() => {
+                    document.body.removeChild(printArea);
+                    document.head.removeChild(style);
+                }, 1000);
+            }
+
             // Print buttons functionality
             printChandaBtn.addEventListener('click', function() {
-                window.print();
+                currentTableType = 'chanda';
+                printWithSettings();
             });
             
             printRashidBtn.addEventListener('click', function() {
-                window.print();
+                currentTableType = 'rashid';
+                printWithSettings();
             });
             
             printCashBtn.addEventListener('click', function() {
-                window.print();
+                currentTableType = 'cash';
+                printWithSettings();
             });
             
             printIncomeBtn.addEventListener('click', function() {
-                window.print();
+                currentTableType = 'income';
+                printWithSettings();
             });
             
             printExpenseBtn.addEventListener('click', function() {
-                window.print();
+                currentTableType = 'expense';
+                printWithSettings();
             });
 
             // Search functionality for chanda table
