@@ -718,11 +718,24 @@
             pointer-events: none;
         }
 
-        /* প্রিন্ট স্টাইল সংশোধন */
+        /* প্রিন্ট স্টাইল - প্রতি পৃষ্ঠায় ২৫ সারি এবং পৃষ্ঠা নম্বর */
         @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+                
+                @bottom-center {
+                    content: "পৃষ্ঠা " counter(page) " / " counter(pages);
+                    font-family: 'Segoe UI', 'Nikosh', 'SolaimanLipi', sans-serif;
+                    font-size: 10pt;
+                    color: #333;
+                }
+            }
+            
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
             }
             
             body * {
@@ -742,7 +755,7 @@
                 background: white;
                 border: none;
                 box-shadow: none;
-                padding: 20px;
+                padding: 0;
                 margin: 0;
                 display: block !important;
             }
@@ -751,15 +764,36 @@
             .table-container.printing .search-container,
             .table-container.printing .buttons-grid,
             .table-container.printing .no-results,
-            .table-container.printing .loading {
+            .table-container.printing .loading,
+            .table-container.printing header,
+            .table-container.printing footer,
+            .table-container.printing .islamic-pattern {
                 display: none !important;
+            }
+            
+            .table-container.printing .table-header {
+                border-bottom: 2px solid #333;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+            }
+            
+            .table-container.printing .table-title {
+                color: black;
+                font-size: 18pt;
+                font-weight: bold;
+                padding-left: 0;
+            }
+            
+            .table-container.printing .table-title::before {
+                display: none;
             }
             
             .table-container.printing table {
                 border-collapse: collapse;
                 width: 100%;
-                font-size: 12pt;
+                font-size: 11pt;
                 color: black;
+                page-break-inside: auto;
             }
             
             .table-container.printing thead {
@@ -767,31 +801,74 @@
                 color: black !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                display: table-header-group;
+            }
+            
+            .table-container.printing tbody {
+                display: table-row-group;
+            }
+            
+            .table-container.printing tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
             }
             
             .table-container.printing th {
                 background: #f0f0f0 !important;
                 color: black !important;
                 font-weight: bold;
-                border: 1px solid #ddd;
+                border: 1px solid #999;
+                padding: 8px;
+                font-size: 11pt;
             }
             
             .table-container.printing td {
-                border: 1px solid #ddd;
+                border: 1px solid #999;
                 padding: 8px;
                 color: black;
             }
             
+            /* প্রতি পৃষ্ঠায় ২৫ সারি */
+            .table-container.printing tbody tr {
+                display: table-row;
+            }
+            
+            .table-container.printing tbody tr:nth-child(n+26) {
+                page-break-before: always;
+            }
+            
+            /* পৃষ্ঠা নম্বর হেডারে যোগ করা */
+            .table-container.printing thead::after {
+                content: "পৃষ্ঠা " counter(page);
+                display: block;
+                text-align: right;
+                font-size: 10pt;
+                color: #666;
+                margin-top: 5px;
+            }
+            
             .table-container.printing .summary {
                 background: #f9f9f9 !important;
-                border: 1px solid #ddd;
+                border: 1px solid #999;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                page-break-inside: avoid;
+                margin-top: 20px;
+                padding: 15px;
             }
             
             .table-container.printing .summary-item {
                 border-left: 5px solid #1a5f7a;
                 background: white;
+                border: 1px solid #ddd;
+            }
+            
+            .table-container.printing .summary-label {
+                color: #333;
+            }
+            
+            .table-container.printing .summary-value {
+                color: #000;
             }
             
             .table-container.printing .paid::before,
@@ -799,30 +876,12 @@
                 color: black;
             }
             
-            .table-container.printing .islamic-pattern,
-            .table-container.printing footer,
-            .table-container.printing header,
-            .table-container.printing .buttons-grid,
-            .table-container.printing .date,
-            .table-container.printing .chanda-text,
-            .table-container.printing h1,
-            .table-container.printing .logo-container {
-                display: none !important;
+            .table-container.printing .paid {
+                color: #2d8c5e;
             }
             
-            .table-container.printing .table-header {
-                border-bottom: 2px solid #333;
-                margin-bottom: 15px;
-            }
-            
-            .table-container.printing .table-title {
-                color: black;
-                font-size: 18pt;
-                padding-left: 0;
-            }
-            
-            .table-container.printing .table-title::before {
-                display: none;
+            .table-container.printing .pending {
+                color: #c57c1a;
             }
         }
 
@@ -1225,7 +1284,7 @@
                 // প্রিন্ট ডায়ালগ খুলুন
                 window.print();
                 
-                // প্রিন্টের পর printing ক্লাস সরান
+                // প্রিন্টের পর printing ক্লাস সরান (একটু সময় নিন)
                 setTimeout(() => {
                     container.classList.remove('printing');
                 }, 1000);
