@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) – চাঁদা ও আয়-ব্যয়</title>
+    <title>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
     <style>
@@ -27,6 +27,7 @@
             --info: #1a5f7a;
             --text: #2c3e50;
             --shadow: rgba(26, 95, 122, 0.1);
+            --mosque: #1a5f7a;
             --cash: #8b4513;
             --income: #2d8c5e;
             --expense: #e74c3c;
@@ -37,7 +38,11 @@
             color: var(--text);
             min-height: 100vh;
             padding: 10px;
-            line-height: 1.5;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(26, 95, 122, 0.05) 2px, transparent 2px),
+                radial-gradient(circle at 90% 80%, rgba(45, 140, 94, 0.05) 2px, transparent 2px);
+            background-size: 50px 50px;
         }
 
         .container {
@@ -52,27 +57,68 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(26, 95, 122, 0.2);
+            position: relative;
+            overflow: hidden;
             color: white;
             border-bottom: 5px solid var(--accent);
         }
 
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), #f8de7e, var(--accent));
+            z-index: 1;
+        }
+
+        header::after {
+            content: "\f06c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.1);
+            transform: rotate(20deg);
+        }
+
         .logo-container {
-            width: 100px;
-            height: 100px;
+            position: relative;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: white;
+            background: linear-gradient(145deg, #ffffff, #e6f2ff);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            border: 4px solid white;
+            border: 5px solid white;
+            position: relative;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            border-radius: 50%;
+            z-index: -1;
+            padding: 5px;
         }
 
         .logo img {
@@ -84,57 +130,133 @@
 
         h1 {
             font-size: 1.8rem;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
 
         .date {
             font-size: 1.1rem;
             color: #f8de7e;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .chanda-text {
             font-size: 1.4rem;
             font-weight: bold;
             color: var(--accent);
-            background: rgba(0,0,0,0.2);
+            margin-bottom: 5px;
+            background: rgba(0, 0, 0, 0.2);
             display: inline-block;
-            padding: 8px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             border: 2px solid var(--accent);
         }
 
-        /* বাটন গ্রিড */
         .buttons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+            margin-bottom: 35px;
         }
 
         .area-btn {
-            background: white;
+            background: var(--card-bg);
             border: none;
             border-radius: 15px;
-            padding: 16px 8px;
+            padding: 18px 12px;
+            color: var(--text);
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.4s;
             box-shadow: 0 8px 20px var(--shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-height: 110px;
             border-top: 5px solid var(--primary);
-            transition: all 0.3s;
-            font-size: 1rem;
+            text-align: center;
         }
-        .area-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(26,95,122,0.25); }
-        .area-icon { font-size: 1.8rem; }
 
-        /* টেবিল কন্টেইনার */
+        .area-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(26, 95, 122, 0.2);
+        }
+
+        .area-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .area-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.1), rgba(45, 140, 94, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .area-btn:hover::before {
+            opacity: 1;
+        }
+
+        .area-btn:nth-child(1) { border-top-color: #1a5f7a; }
+        .area-btn:nth-child(2) { border-top-color: #2d8c5e; }
+        .area-btn:nth-child(3) { border-top-color: #8b4513; }
+        .area-btn:nth-child(4) { border-top-color: #9c27b0; }
+        .area-btn:nth-child(5) { border-top-color: #2196f3; }
+        .area-btn:nth-child(6) { border-top-color: #ff9800; }
+        .area-btn:nth-child(7) { border-top-color: #795548; }
+        .area-btn:nth-child(8) { border-top-color: #e91e63; }
+        .area-btn:nth-child(9) { border-top-color: var(--cash); }
+        .area-btn:nth-child(10) { border-top-color: var(--income); }
+        .area-btn:nth-child(11) { border-top-color: var(--expense); }
+
+        .area-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .area-btn:nth-child(1) .area-icon { color: #1a5f7a; }
+        .area-btn:nth-child(2) .area-icon { color: #2d8c5e; }
+        .area-btn:nth-child(3) .area-icon { color: #8b4513; }
+        .area-btn:nth-child(4) .area-icon { color: #9c27b0; }
+        .area-btn:nth-child(5) .area-icon { color: #2196f3; }
+        .area-btn:nth-child(6) .area-icon { color: #ff9800; }
+        .area-btn:nth-child(7) .area-icon { color: #795548; }
+        .area-btn:nth-child(8) .area-icon { color: #e91e63; }
+        .area-btn:nth-child(9) .area-icon { color: var(--cash); }
+        .area-btn:nth-child(10) .area-icon { color: var(--income); }
+        .area-btn:nth-child(11) .area-icon { color: var(--expense); }
+
         .table-container {
-            background: white;
+            background: var(--card-bg);
             border-radius: 18px;
             padding: 20px;
             box-shadow: 0 10px 30px var(--shadow);
@@ -142,6 +264,19 @@
             display: none;
             overflow-x: auto;
             border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .table-container::before {
+            content: "\f54e";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 3rem;
+            color: rgba(26, 95, 122, 0.05);
+            z-index: 0;
         }
 
         .table-header {
@@ -149,659 +284,1982 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--border);
             flex-wrap: wrap;
             gap: 15px;
+            position: relative;
+            z-index: 1;
         }
 
         .table-title {
             font-size: 1.5rem;
             color: var(--primary);
-            padding-left: 12px;
-            border-left: 5px solid var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-left: 15px;
         }
 
-        /* প্রিন্ট বাটন */
+        .table-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        .cash-table .table-title::before {
+            background: var(--cash);
+        }
+        
+        .income-table .table-title::before {
+            background: var(--income);
+        }
+        
+        .expense-table .table-title::before {
+            background: var(--expense);
+        }
+
         .print-btn {
-            background: linear-gradient(135deg, var(--primary), #0f4a63);
+            background: linear-gradient(135deg, var(--primary), var(--info));
             border: none;
-            padding: 10px 22px;
+            padding: 10px 20px;
             border-radius: 50px;
             color: white;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s;
+            font-size: 1rem;
             font-weight: 600;
-            box-shadow: 0 5px 12px rgba(26,95,122,0.4);
-            transition: 0.2s;
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 5px 15px rgba(26, 95, 122, 0.3);
         }
-        .print-btn:hover { background: linear-gradient(135deg, #0f4a63, #1a5f7a); transform: scale(1.02); }
 
-        /* সার্চ */
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 95, 122, 0.4);
+        }
+
+        .print-btn:active {
+            transform: translateY(0);
+        }
+
+        .cash-table .print-btn {
+            background: linear-gradient(135deg, var(--cash), #a0522d);
+        }
+        
+        .income-table .print-btn {
+            background: linear-gradient(135deg, var(--income), #1e8449);
+        }
+        
+        .expense-table .print-btn {
+            background: linear-gradient(135deg, var(--expense), #c0392b);
+        }
+
         .search-container {
             margin-bottom: 20px;
             position: relative;
+            z-index: 1;
         }
+
+        .search-input-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .search-input {
-            width: 100%;
-            padding: 14px 20px 14px 50px;
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 20px;
+            padding-left: 50px;
             border: 2px solid var(--border);
             border-radius: 50px;
+            background: var(--card-bg);
+            color: var(--text);
             font-size: 1rem;
-            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
         }
-        .search-input:focus { outline: none; border-color: var(--primary); }
-        .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
-        .search-help { font-size: 0.9rem; margin-top: 6px; color: var(--text); opacity: 0.8; }
 
-        /* নো রেজাল্ট */
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(26, 95, 122, 0.2);
+        }
+
+        .cash-table .search-input:focus {
+            border-color: var(--cash);
+        }
+        
+        .income-table .search-input:focus {
+            border-color: var(--income);
+        }
+        
+        .expense-table .search-input:focus {
+            border-color: var(--expense);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .cash-table .search-icon {
+            color: var(--cash);
+        }
+        
+        .income-table .search-icon {
+            color: var(--income);
+        }
+        
+        .expense-table .search-icon {
+            color: var(--expense);
+        }
+
+        .search-help {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 8px;
+            padding-left: 20px;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .search-help i {
+            color: var(--accent);
+        }
+
         .no-results {
             text-align: center;
             padding: 40px 20px;
             color: var(--warning);
             display: none;
-            background: rgba(255,248,225,0.7);
-            border-radius: 16px;
+            z-index: 1;
+            position: relative;
+            background: rgba(255, 248, 225, 0.5);
+            border-radius: 10px;
+            margin-top: 10px;
         }
 
-        /* টেবিল */
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--warning);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            font-size: 0.95rem;
+            min-width: 700px;
+            position: relative;
+            z-index: 1;
         }
+
         thead {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
         }
+
+        .cash-table thead {
+            background: linear-gradient(135deg, var(--cash), #a0522d);
+        }
+        
+        .income-table thead {
+            background: linear-gradient(135deg, var(--income), #1e8449);
+        }
+        
+        .expense-table thead {
+            background: linear-gradient(135deg, var(--expense), #c0392b);
+        }
+
         th, td {
-            padding: 12px 10px;
+            padding: 15px 12px;
             text-align: left;
             border-bottom: 1px solid var(--border);
+            font-size: 1rem;
         }
-        th { white-space: nowrap; font-weight: 700; }
-        tr:hover { background: rgba(26,95,122,0.05); }
-        tr:nth-child(even) { background: #f9f9f9; }
 
-        /* স্ট্যাটাস */
-        .paid { color: var(--success); font-weight: 700; padding-left: 20px; position: relative; }
-        .paid::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; }
-        .pending { color: var(--warning); font-weight: 700; padding-left: 20px; position: relative; }
-        .pending::before { content: "\f252"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; }
+        th {
+            font-weight: 700;
+            white-space: nowrap;
+        }
 
-        /* সারাংশ */
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        tr:hover {
+            background: rgba(26, 95, 122, 0.05);
+        }
+
+        .cash-table tr:hover {
+            background: rgba(139, 69, 19, 0.05);
+        }
+        
+        .income-table tr:hover {
+            background: rgba(45, 140, 94, 0.05);
+        }
+        
+        .expense-table tr:hover {
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(240, 245, 248, 0.7);
+        }
+
+        tr:nth-child(even):hover {
+            background: rgba(26, 95, 122, 0.08);
+        }
+
+        .cash-table tr:nth-child(even):hover {
+            background: rgba(139, 69, 19, 0.08);
+        }
+        
+        .income-table tr:nth-child(even):hover {
+            background: rgba(45, 140, 94, 0.08);
+        }
+        
+        .expense-table tr:nth-child(even):hover {
+            background: rgba(231, 76, 60, 0.08);
+        }
+
+        .paid {
+            color: var(--success);
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .paid::before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .pending {
+            color: var(--warning);
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pending::before {
+            content: "\f252";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
         .summary {
-            background: #f1f7fa;
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.05), rgba(45, 140, 94, 0.05));
             padding: 20px;
             border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            border: 1px solid var(--border);
         }
+
+        .cash-table .summary {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(160, 82, 45, 0.05));
+        }
+        
+        .income-table .summary {
+            background: linear-gradient(135deg, rgba(45, 140, 94, 0.05), rgba(30, 132, 73, 0.05));
+        }
+        
+        .expense-table .summary {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05), rgba(192, 57, 43, 0.05));
+        }
+
         .summary-item {
-            background: white;
+            display: flex;
+            flex-direction: column;
             padding: 15px;
+            background: white;
             border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-left: 5px solid var(--primary);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.03);
         }
-        .summary-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; color: #2c3e50; }
-        .summary-value { font-weight: 800; font-size: 1.3rem; color: var(--primary); }
 
-        /* লোডিং */
-        .loading { display: flex; justify-content: center; padding: 30px; display: none; }
-        .spinner { width: 40px; height: 40px; border: 4px solid #e0e0e0; border-radius: 50%; border-top: 4px solid var(--primary); animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .cash-table .summary-item {
+            border-left: 5px solid var(--cash);
+        }
+        
+        .income-table .summary-item {
+            border-left: 5px solid var(--income);
+        }
+        
+        .expense-table .summary-item {
+            border-left: 5px solid var(--expense);
+        }
 
-        /* ফুটার */
+        .summary-label {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .summary-value {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .cash-table .summary-value {
+            color: var(--cash);
+        }
+        
+        .income-table .summary-value {
+            color: var(--income);
+        }
+        
+        .expense-table .summary-value {
+            color: var(--expense);
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
             padding: 20px;
             color: var(--primary);
-            background: rgba(255,255,255,0.7);
-            border-radius: 15px;
+            font-size: 0.9rem;
             border-top: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
         }
 
-        /* A4 প্রিন্ট অপটিমাইজেশান – ৩০ সারি */
+        footer::before {
+            content: "\f1fc";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            display: none;
+            z-index: 1;
+            position: relative;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(26, 95, 122, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        .cash-table .spinner {
+            border-top: 4px solid var(--cash);
+        }
+        
+        .income-table .spinner {
+            border-top: 4px solid var(--income);
+        }
+        
+        .expense-table .spinner {
+            border-top: 4px solid var(--expense);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .islamic-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(26, 95, 122, 0.03) 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(45, 140, 94, 0.03) 2px, transparent 2px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .buttons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            
+            .area-btn {
+                padding: 15px 10px;
+                min-height: 100px;
+                font-size: 0.95rem;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .chanda-text {
+                font-size: 1.2rem;
+            }
+            
+            .search-input-container {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                min-width: 100%;
+            }
+            
+            .summary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            
+            header {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .table-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .print-btn {
+                align-self: stretch;
+                justify-content: center;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+        }
+
         @media print {
-            body * { visibility: hidden; }
-            .table-container, .table-container * { visibility: visible; }
+            body * {
+                visibility: hidden;
+                background: white;
+                color: black;
+            }
+            
+            .table-container, .table-container * {
+                visibility: visible;
+            }
+            
             .table-container {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
-                background: white;
                 box-shadow: none;
+                background: white;
                 border: none;
-                padding: 0.3in 0.2in;
             }
-            .print-btn, .search-container, .buttons-grid, header, footer, .logo-container, .date, .chanda-text, .search-help, .no-results, .loading {
-                display: none !important;
+            
+            .print-btn, .search-container {
+                display: none;
             }
-            h1 { display: none; }
-            .table-title { font-size: 1.4rem; color: black; border-left-color: black; }
-            th { background: #333 !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .summary { background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            table { page-break-inside: auto; }
-            tr { page-break-inside: avoid; page-break-after: auto; }
-            thead { display: table-header-group; }
-            tfoot { display: table-footer-group; }
-            /* A4 সাইজে ৩০টি সারি থাকবে – সহজেই দেখা যাবে */
-            tbody tr { height: auto; }
+            
+            .summary {
+                background: #f5f5f5;
+                border: 1px solid #ddd;
+            }
         }
 
-        /* ছোট পর্দা */
-        @media (max-width: 600px) {
-            .buttons-grid { grid-template-columns: repeat(2, 1fr); }
-            .table-header { flex-direction: column; align-items: start; }
+        .highlight {
+            background-color: rgba(212, 175, 55, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
         }
-
-        /* হাইলাইট */
-        .highlight { background-color: #fff0b5; font-weight: 600; padding: 0 2px; border-radius: 4px; }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="logo-container">
-            <div class="logo">
-                <img src="https://i.imgur.com/iA88Sk4.jpeg" alt="লোগো" onerror="this.src='https://i.imgur.com/6JcYJ5N.png'">
+    <div class="islamic-pattern"></div>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="https://i.imgur.com/iA88Sk4.jpeg" alt="Logo" onerror="this.src='https://i.imgur.com/6JcYJ5N.png'">
+                </div>
+            </div>
+            <h1>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</h1>
+            <div class="date">২২শে মাঘ ৫ই ফেব্রুয়ারী ২০২৬ইং</div>
+            <div class="chanda-text">সামাজিক চাঁদার হিসাব</div>
+        </header>
+
+        <div class="buttons-grid">
+            <button class="area-btn" data-area="সৈয়দ পাড়া">
+                <i class="fas fa-mosque area-icon"></i> সৈয়দ পাড়া
+            </button>
+            <button class="area-btn" data-area="শেখ পাড়া">
+                <i class="fas fa-home area-icon"></i> শেখ পাড়া
+            </button>
+            <button class="area-btn" data-area="ওয়ালি হাজ্বির বাড়ি">
+                <i class="fas fa-kaaba area-icon"></i> ওয়ালি হাজ্বির বাড়ি
+            </button>
+            <button class="area-btn" data-area="কোরবান আলী হাজ্বির বাড়ি">
+                <i class="fas fa-place-of-worship area-icon"></i> কোরবান আলী হাজ্বির বাড়ি
+            </button>
+            <button class="area-btn" data-area="হাবিবিয়া পাড়া">
+                <i class="fas fa-home area-icon"></i> হাবিবিয়া পাড়া
+            </button>
+            <button class="area-btn" data-area="নাছির তালুকদার বাড়ি">
+                <i class="fas fa-landmark area-icon"></i> নাছির তালুকদার বাড়ি
+            </button>
+            <button class="area-btn" data-area="তমিজ উদ্দিন মুন্সির বাড়ি">
+                <i class="fas fa-house-user area-icon"></i> তমিজ উদ্দিন মুন্সির বাড়ি
+            </button>
+            <button class="area-btn" data-area="রশিদ বই">
+                <i class="fas fa-book area-icon"></i> রশিদ বই
+            </button>
+            <button class="area-btn" data-area="ক্যাশ টেবিল">
+                <i class="fas fa-money-bill-wave area-icon"></i> ক্যাশ টেবিল
+            </button>
+            <button class="area-btn" data-area="আয়-হিসাব">
+                <i class="fas fa-hand-holding-usd area-icon"></i> আয়-হিসাব
+            </button>
+            <button class="area-btn" data-area="ব্যয়-হিসাব">
+                <i class="fas fa-file-invoice-dollar area-icon"></i> ব্যয়-হিসাব
+            </button>
+        </div>
+
+        <!-- চাঁদার তালিকা কন্টেইনার -->
+        <div class="table-container" id="chandaTableContainer">
+            <div class="table-header">
+                <h2 class="table-title" id="chandaTableTitle">চাঁদার তালিকা</h2>
+                <button class="print-btn" id="printChandaBtn">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-container">
+                    <div style="position: relative; flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="chandaSearchInput" class="search-input" placeholder="ক্রমিক নং বা নাম দিয়ে সার্চ করুন...">
+                    </div>
+                </div>
+                <div class="search-help">
+                    <i class="fas fa-info-circle"></i>
+                    <span>টিপ: ক্রমিক নং (যেমন: ১, ২, ৩) বা নামের অংশ লিখে সার্চ করুন</span>
+                </div>
+            </div>
+            
+            <div class="loading" id="chandaLoadingIndicator">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="no-results" id="chandaNoResults">
+                <i class="fas fa-search"></i>
+                <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+                <p>আপনার সার্চের সাথে মিলছে না। দয়া করে আবার চেষ্টা করুন।</p>
+            </div>
+            
+            <table id="chandaTable">
+                <thead>
+                    <tr>
+                        <th>ক্রমিক নং</th>
+                        <th>নাম</th>
+                        <th>চাঁদা</th>
+                        <th>উসুল</th>
+                        <th>হাদিয়া</th>
+                        <th>পরিশোধ</th>
+                    </tr>
+                </thead>
+                <tbody id="chandaTableBody">
+                    <!-- ডেটা JavaScript দ্বারা ইনসার্ট হবে -->
+                </tbody>
+            </table>
+            <div class="summary" id="chandaSummarySection">
+                <!-- সারাংশ JavaScript দ্বারা ইনসার্ট হবে -->
             </div>
         </div>
-        <h1>হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ)</h1>
-        <div class="date">২২শে মাঘ, ৫ই ফেব্রুয়ারী ২০২৬ ইং</div>
-        <div class="chanda-text">সামাজিক চাঁদার হিসাব</div>
-    </header>
 
-    <!-- এলাকা বাটন -->
-    <div class="buttons-grid">
-        <button class="area-btn" data-area="সৈয়দ পাড়ा"><i class="fas fa-mosque area-icon"></i>সৈয়দ পাড়া</button>
-        <button class="area-btn" data-area="শেখ পাড়া"><i class="fas fa-home area-icon"></i>শেখ পাড়া</button>
-        <button class="area-btn" data-area="ওয়ালি হাজ্বির বাড়ি"><i class="fas fa-kaaba area-icon"></i>ওয়ালি হাজ্বির বাড়ি</button>
-        <button class="area-btn" data-area="কোরবান আলী হাজ্বির বাড়ি"><i class="fas fa-place-of-worship area-icon"></i>কোরবান আলী হাজ্বির বাড়ি</button>
-        <button class="area-btn" data-area="হাবিবিয়া পাড়া"><i class="fas fa-home area-icon"></i>হাবিবিয়া পাড়া</button>
-        <button class="area-btn" data-area="নাছির তালুকদার বাড়ি"><i class="fas fa-landmark area-icon"></i>নাছির তালুকদার বাড়ি</button>
-        <button class="area-btn" data-area="তমিজ উদ্দিন মুন্সির বাড়ি"><i class="fas fa-house-user area-icon"></i>তমিজ উদ্দিন মুন্সির বাড়ি</button>
-        <button class="area-btn" data-area="রশিদ বই"><i class="fas fa-book area-icon"></i>রশিদ বই</button>
-        <button class="area-btn" data-area="ক্যাশ টেবিল"><i class="fas fa-money-bill-wave area-icon"></i>ক্যাশ টেবিল</button>
-        <button class="area-btn" data-area="আয়-হিসাব"><i class="fas fa-hand-holding-usd area-icon"></i>আয়-হিসাব</button>
-        <button class="area-btn" data-area="ব্যয়-হিসাব"><i class="fas fa-file-invoice-dollar area-icon"></i>ব্যয়-হিসাব</button>
-    </div>
-
-    <!-- চাঁদা টেবিল কন্টেইনার -->
-    <div class="table-container" id="chandaTableContainer">
-        <div class="table-header"><h2 class="table-title" id="chandaTableTitle">চাঁদার তালিকা</h2><button class="print-btn" id="printChandaBtn"><i class="fas fa-print"></i> প্রিন্ট</button></div>
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="chandaSearchInput" class="search-input" placeholder="ক্রমিক নং বা নাম দিয়ে সার্চ...">
-            <div class="search-help"><i class="fas fa-info-circle"></i> টিপ: ক্রমিক নং (১,২,৩) বা নামের অংশ লিখুন</div>
+        <!-- রশিদ বই কন্টেইনার -->
+        <div class="table-container" id="rashidTableContainer">
+            <div class="table-header">
+                <h2 class="table-title" id="rashidTableTitle">রশিদ বই তালিকা</h2>
+                <button class="print-btn" id="printRashidBtn">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-container">
+                    <div style="position: relative; flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="rashidSearchInput" class="search-input" placeholder="ক্রমিক নং বা নাম দিয়ে সার্চ করুন...">
+                    </div>
+                </div>
+                <div class="search-help">
+                    <i class="fas fa-info-circle"></i>
+                    <span>টিপ: ক্রমিক নং (যেমন: ১, ২, ৩) বা নামের অংশ লিখে সার্চ করুন</span>
+                </div>
+            </div>
+            
+            <div class="loading" id="rashidLoadingIndicator">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="no-results" id="rashidNoResults">
+                <i class="fas fa-search"></i>
+                <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+                <p>আপনার সার্চের সাথে মিলছে না। দয়া করে আবার চেষ্টা করুন।</p>
+            </div>
+            
+            <table id="rashidTable">
+                <thead>
+                    <tr>
+                        <th>ক্রমিক নং</th>
+                        <th>নাম</th>
+                        <th>রশিদ বই নং</th>
+                        <th>টাকা</th>
+                        <th>ঠিকানা</th>
+                    </tr>
+                </thead>
+                <tbody id="rashidTableBody">
+                    <!-- ডেটা JavaScript দ্বারা ইনসার্ট হবে -->
+                </tbody>
+            </table>
+            <div class="summary" id="rashidSummarySection">
+                <!-- সারাংশ JavaScript দ্বারা ইনসার্ট হবে -->
+            </div>
         </div>
-        <div class="loading" id="chandaLoadingIndicator"><div class="spinner"></div></div>
-        <div class="no-results" id="chandaNoResults"><i class="fas fa-search"></i><h3>কোন ফলাফল নেই</h3></div>
-        <table id="chandaTable">
-            <thead><tr><th>ক্রমিক</th><th>নাম</th><th>চাঁদা</th><th>উসুল</th><th>হাদিয়া</th><th>পরিশোধ</th></tr></thead>
-            <tbody id="chandaTableBody"></tbody>
-        </table>
-        <div class="summary" id="chandaSummarySection"></div>
+
+        <!-- ক্যাশ টেবিল কন্টেইনার -->
+        <div class="table-container cash-table" id="cashTableContainer">
+            <div class="table-header">
+                <h2 class="table-title" id="cashTableTitle">ক্যাশ টেবিল তালিকা</h2>
+                <button class="print-btn" id="printCashBtn">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-container">
+                    <div style="position: relative; flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="cashSearchInput" class="search-input" placeholder="ক্রমিক নং বা নাম দিয়ে সার্চ করুন...">
+                    </div>
+                </div>
+                <div class="search-help">
+                    <i class="fas fa-info-circle"></i>
+                    <span>টিপ: ক্রমিক নং (যেমন: ১, ২, ৩) বা নামের অংশ লিখে সার্চ করুন</span>
+                </div>
+            </div>
+            
+            <div class="loading" id="cashLoadingIndicator">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="no-results" id="cashNoResults">
+                <i class="fas fa-search"></i>
+                <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+                <p>আপনার সার্চের সাথে মিলছে না। দয়া করে আবার চেষ্টা করুন।</p>
+            </div>
+            
+            <table id="cashTable">
+                <thead>
+                    <tr>
+                        <th>ক্রমিক নং</th>
+                        <th>নাম</th>
+                        <th>টাকা</th>
+                        <th>ঠিকানা</th>
+                    </tr>
+                </thead>
+                <tbody id="cashTableBody">
+                    <!-- ডেটা JavaScript দ্বারা ইনসার্ট হবে -->
+                </tbody>
+            </table>
+            <div class="summary" id="cashSummarySection">
+                <!-- সারাংশ JavaScript দ্বারা ইনসার্ট হবে -->
+            </div>
+        </div>
+
+        <!-- আয়-হিসাব কন্টেইনার -->
+        <div class="table-container income-table" id="incomeTableContainer">
+            <div class="table-header">
+                <h2 class="table-title" id="incomeTableTitle">আয়-হিসাব তালিকা</h2>
+                <button class="print-btn" id="printIncomeBtn">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-container">
+                    <div style="position: relative; flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="incomeSearchInput" class="search-input" placeholder="ক্রমিক নং বা বিবরণ দিয়ে সার্চ করুন...">
+                    </div>
+                </div>
+                <div class="search-help">
+                    <i class="fas fa-info-circle"></i>
+                    <span>টিপ: ক্রমিক নং (যেমন: ১, ২, ৩) বা বিবরণের অংশ লিখে সার্চ করুন</span>
+                </div>
+            </div>
+            
+            <div class="loading" id="incomeLoadingIndicator">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="no-results" id="incomeNoResults">
+                <i class="fas fa-search"></i>
+                <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+                <p>আপনার সার্চের সাথে মিলছে না। দয়া করে আবার চেষ্টা করুন।</p>
+            </div>
+            
+            <table id="incomeTable">
+                <thead>
+                    <tr>
+                        <th>ক্রমিক নং</th>
+                        <th>বিবরণ</th>
+                        <th>টাকা</th>
+                    </tr>
+                </thead>
+                <tbody id="incomeTableBody">
+                    <!-- ডেটা JavaScript দ্বারা ইনসার্ট হবে -->
+                </tbody>
+            </table>
+            <div class="summary" id="incomeSummarySection">
+                <!-- সারাংশ JavaScript দ্বারা ইনসার্ট হবে -->
+            </div>
+        </div>
+
+        <!-- ব্যয়-হিসাব কন্টেইনার -->
+        <div class="table-container expense-table" id="expenseTableContainer">
+            <div class="table-header">
+                <h2 class="table-title" id="expenseTableTitle">ব্যয়-হিসাব তালিকা</h2>
+                <button class="print-btn" id="printExpenseBtn">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-container">
+                    <div style="position: relative; flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="expenseSearchInput" class="search-input" placeholder="ক্রমিক নং বা বিবরণ দিয়ে সার্চ করুন...">
+                    </div>
+                </div>
+                <div class="search-help">
+                    <i class="fas fa-info-circle"></i>
+                    <span>টিপ: ক্রমিক নং (যেমন: ১, ২, ৩) বা বিবরণের অংশ লিখে সার্চ করুন</span>
+                </div>
+            </div>
+            
+            <div class="loading" id="expenseLoadingIndicator">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="no-results" id="expenseNoResults">
+                <i class="fas fa-search"></i>
+                <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+                <p>আপনার সার্চের সাথে মিলছে না। দয়া করে আবার চেষ্টা করুন।</p>
+            </div>
+            
+            <table id="expenseTable">
+                <thead>
+                    <tr>
+                        <th>ক্রমিক নং</th>
+                        <th>বিবরণ</th>
+                        <th>টাকা</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseTableBody">
+                    <!-- ডেটা JavaScript দ্বারা ইনসার্ট হবে -->
+                </tbody>
+            </table>
+            <div class="summary" id="expenseSummarySection">
+                <!-- সারাংশ JavaScript দ্বারা ইনসার্ট হবে -->
+            </div>
+        </div>
     </div>
 
-    <!-- রশিদ বই টেবিল -->
-    <div class="table-container" id="rashidTableContainer">
-        <div class="table-header"><h2 class="table-title" id="rashidTableTitle">রশিদ বই</h2><button class="print-btn" id="printRashidBtn"><i class="fas fa-print"></i> প্রিন্ট</button></div>
-        <div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="rashidSearchInput" class="search-input" placeholder="ক্রমিক/নাম/রশিদ নং"></div>
-        <div class="loading" id="rashidLoadingIndicator"><div class="spinner"></div></div>
-        <div class="no-results" id="rashidNoResults"><i class="fas fa-search"></i><h3>কোন ফলাফল নেই</h3></div>
-        <table id="rashidTable"><thead><tr><th>ক্রমিক</th><th>নাম</th><th>রশিদ নং</th><th>টাকা</th><th>ঠিকানা</th></tr></thead><tbody id="rashidTableBody"></tbody></table>
-        <div class="summary" id="rashidSummarySection"></div>
-    </div>
+    <footer>
+        &copy; হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) এর ওরশ পরিচালনা কমিটি
+    </footer>
 
-    <!-- ক্যাশ টেবিল -->
-    <div class="table-container cash-table" id="cashTableContainer">
-        <div class="table-header"><h2 class="table-title" id="cashTableTitle">ক্যাশ টেবিল</h2><button class="print-btn" id="printCashBtn"><i class="fas fa-print"></i> প্রিন্ট</button></div>
-        <div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="cashSearchInput" class="search-input" placeholder="ক্রমিক/নাম"></div>
-        <div class="loading" id="cashLoadingIndicator"><div class="spinner"></div></div>
-        <div class="no-results" id="cashNoResults"><i class="fas fa-search"></i><h3>কোন ফলাফল নেই</h3></div>
-        <table id="cashTable"><thead><tr><th>ক্রমিক</th><th>নাম</th><th>টাকা</th><th>ঠিকানা</th></tr></thead><tbody id="cashTableBody"></tbody></table>
-        <div class="summary" id="cashSummarySection"></div>
-    </div>
-
-    <!-- আয় টেবিল -->
-    <div class="table-container income-table" id="incomeTableContainer">
-        <div class="table-header"><h2 class="table-title" id="incomeTableTitle">আয়-হিসাব</h2><button class="print-btn" id="printIncomeBtn"><i class="fas fa-print"></i> প্রিন্ট</button></div>
-        <div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="incomeSearchInput" class="search-input" placeholder="ক্রমিক/বিবরণ"></div>
-        <div class="loading" id="incomeLoadingIndicator"><div class="spinner"></div></div>
-        <div class="no-results" id="incomeNoResults"><i class="fas fa-search"></i><h3>কোন ফলাফল নেই</h3></div>
-        <table id="incomeTable"><thead><tr><th>ক্রমিক</th><th>বিবরণ</th><th>টাকা</th></tr></thead><tbody id="incomeTableBody"></tbody></table>
-        <div class="summary" id="incomeSummarySection"></div>
-    </div>
-
-    <!-- ব্যয় টেবিল -->
-    <div class="table-container expense-table" id="expenseTableContainer">
-        <div class="table-header"><h2 class="table-title" id="expenseTableTitle">ব্যয়-হিসাব</h2><button class="print-btn" id="printExpenseBtn"><i class="fas fa-print"></i> প্রিন্ট</button></div>
-        <div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="expenseSearchInput" class="search-input" placeholder="ক্রমিক/বিবরণ"></div>
-        <div class="loading" id="expenseLoadingIndicator"><div class="spinner"></div></div>
-        <div class="no-results" id="expenseNoResults"><i class="fas fa-search"></i><h3>কোন ফলাফল নেই</h3></div>
-        <table id="expenseTable"><thead><tr><th>ক্রমিক</th><th>বিবরণ</th><th>টাকা</th></tr></thead><tbody id="expenseTableBody"></tbody></table>
-        <div class="summary" id="expenseSummarySection"></div>
-    </div>
-
-    <footer>&copy; হযরত সৈয়দ ওয়াইছ উদ্দিন শাহ্ (রহঃ) ওরশ পরিচালনা কমিটি</footer>
-</div>
-
-<script>
-(function() {
-    // ---------- ইউটিলিটি ফাংশন (বাংলা সংখ্যা, কমা, হাইলাইট) ----------
-    function toBengaliNumber(num) {
-        const en = ['0','1','2','3','4','5','6','7','8','9'];
-        const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
-        return num.toString().split('').map(d => en.includes(d) ? bn[en.indexOf(d)] : d).join('');
-    }
-    function toEnglishNumber(bnStr) {
-        const en = ['0','1','2','3','4','5','6','7','8','9'];
-        const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
-        return bnStr.toString().split('').map(ch => bn.includes(ch) ? en[bn.indexOf(ch)] : ch).join('');
-    }
-    function formatCurrency(amount) {
-        let num = parseInt(amount) || 0;
-        return toBengaliNumber(num.toLocaleString('en')) + ' টাকা';
-    }
-    function highlightText(text, term) {
-        if (!term) return text;
-        try {
-            let escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            let regex = new RegExp(`(${escaped})`, 'gi');
-            return text.replace(regex, '<span class="highlight">$1</span>');
-        } catch (e) { return text; }
-    }
-
-    // ---------- গ্লোবাল ডেটা ----------
-    let allChandaData = {
-        "সৈয়দ পাড়া": [], "শেখ পাড়া": [], "ওয়ালি হাজ্বির বাড়ি": [], "কোরবান আলী হাজ্বির বাড়ি": [],
-        "হাবিবিয়া পাড়া": [], "নাছির তালুকদার বাড়ি": [], "তমিজ উদ্দিন মুন্সির বাড়ি": []
-    };
-    let allRashidData = [], allCashData = [], allIncomeData = [], allExpenseData = [];
-
-    // current filtered
-    let currentChandaData = [], currentFilteredChanda = [];
-    let currentFilteredRashid = [], currentFilteredCash = [], currentFilteredIncome = [], currentFilteredExpense = [];
-
-    // এলিমেন্ট রেফ
-    const containers = {
-        chanda: document.getElementById('chandaTableContainer'),
-        rashid: document.getElementById('rashidTableContainer'),
-        cash: document.getElementById('cashTableContainer'),
-        income: document.getElementById('incomeTableContainer'),
-        expense: document.getElementById('expenseTableContainer')
-    };
-    const bodies = {
-        chanda: document.getElementById('chandaTableBody'),
-        rashid: document.getElementById('rashidTableBody'),
-        cash: document.getElementById('cashTableBody'),
-        income: document.getElementById('incomeTableBody'),
-        expense: document.getElementById('expenseTableBody')
-    };
-    const summaries = {
-        chanda: document.getElementById('chandaSummarySection'),
-        rashid: document.getElementById('rashidSummarySection'),
-        cash: document.getElementById('cashSummarySection'),
-        income: document.getElementById('incomeSummarySection'),
-        expense: document.getElementById('expenseSummarySection')
-    };
-    const noResults = {
-        chanda: document.getElementById('chandaNoResults'),
-        rashid: document.getElementById('rashidNoResults'),
-        cash: document.getElementById('cashNoResults'),
-        income: document.getElementById('incomeNoResults'),
-        expense: document.getElementById('expenseNoResults')
-    };
-    const searchInputs = {
-        chanda: document.getElementById('chandaSearchInput'),
-        rashid: document.getElementById('rashidSearchInput'),
-        cash: document.getElementById('cashSearchInput'),
-        income: document.getElementById('incomeSearchInput'),
-        expense: document.getElementById('expenseSearchInput')
-    };
-    const titles = {
-        chanda: document.getElementById('chandaTableTitle'),
-        rashid: document.getElementById('rashidTableTitle'),
-        cash: document.getElementById('cashTableTitle'),
-        income: document.getElementById('incomeTableTitle'),
-        expense: document.getElementById('expenseTableTitle')
-    };
-
-    // ---------- রেন্ডার ফাংশন (সব টেবিল) ----------
-    function renderChanda(data, filter='') {
-        let html = '';
-        data.forEach((item, idx) => {
-            let serial = toBengaliNumber(idx+1);
-            let name = filter ? highlightText(item.name, filter) : item.name;
-            html += `<tr>
-                <td>${filter ? highlightText(serial, filter) : serial}</td>
-                <td>${name}</td>
-                <td>${formatCurrency(item.chanda)}</td>
-                <td>${formatCurrency(item.collection)}</td>
-                <td>${formatCurrency(item.hadiya)}</td>
-                <td class="${item.paid ? 'paid' : 'pending'}">${item.paid ? 'পরিশোধিত' : 'বাকি'}</td>
-            </tr>`;
-        });
-        bodies.chanda.innerHTML = html || '<tr><td colspan="6" style="text-align:center;">কোন তথ্য নেই</td></tr>';
-    }
-
-    function renderRashid(data, filter='') {
-        let html = '';
-        data.forEach((item, idx) => {
-            let serial = toBengaliNumber(idx+1);
-            let name = filter ? highlightText(item.name, filter) : item.name;
-            let rashid = filter && item.rashid_no ? highlightText(item.rashid_no, filter) : (item.rashid_no || '');
-            html += `<tr>
-                <td>${filter ? highlightText(serial, filter) : serial}</td>
-                <td>${name}</td>
-                <td>${rashid}</td>
-                <td>${formatCurrency(item.amount)}</td>
-                <td>${item.address || ''}</td>
-            </tr>`;
-        });
-        bodies.rashid.innerHTML = html || '<tr><td colspan="5" style="text-align:center;">কোন তথ্য নেই</td></tr>';
-    }
-
-    function renderCash(data, filter='') {
-        let html = '';
-        data.forEach((item, idx) => {
-            let serial = toBengaliNumber(idx+1);
-            let name = filter ? highlightText(item.name, filter) : item.name;
-            html += `<tr>
-                <td>${filter ? highlightText(serial, filter) : serial}</td>
-                <td>${name}</td>
-                <td>${formatCurrency(item.amount)}</td>
-                <td>${item.address || ''}</td>
-            </tr>`;
-        });
-        bodies.cash.innerHTML = html || '<tr><td colspan="4" style="text-align:center;">কোন তথ্য নেই</td></tr>';
-    }
-
-    function renderIncome(data, filter='') {
-        let html = '';
-        data.forEach((item, idx) => {
-            let serial = toBengaliNumber(idx+1);
-            let desc = filter ? highlightText(item.description, filter) : item.description;
-            html += `<tr>
-                <td>${filter ? highlightText(serial, filter) : serial}</td>
-                <td>${desc}</td>
-                <td>${formatCurrency(item.amount)}</td>
-            </tr>`;
-        });
-        bodies.income.innerHTML = html || '<tr><td colspan="3" style="text-align:center;">কোন তথ্য নেই</td></tr>';
-    }
-
-    function renderExpense(data, filter='') {
-        let html = '';
-        data.forEach((item, idx) => {
-            let serial = toBengaliNumber(idx+1);
-            let desc = filter ? highlightText(item.description, filter) : item.description;
-            html += `<tr>
-                <td>${filter ? highlightText(serial, filter) : serial}</td>
-                <td>${desc}</td>
-                <td>${formatCurrency(item.amount)}</td>
-            </tr>`;
-        });
-        bodies.expense.innerHTML = html || '<tr><td colspan="3" style="text-align:center;">কোন তথ্য নেই</td></tr>';
-    }
-
-    // সারাংশ আপডেট
-    function updateSummary(type, data) {
-        let total = 0, count = data.length;
-        let paid = 0, totalChanda=0, totalColl=0, totalHad=0;
-        if (type === 'chanda') {
-            data.forEach(p => {
-                totalChanda += parseInt(p.chanda)||0;
-                totalColl += parseInt(p.collection)||0;
-                totalHad += parseInt(p.hadiya)||0;
-                if(p.paid) paid++;
-            });
-            summaries.chanda.innerHTML = `
-                <div class="summary-item"><span class="summary-label">মোট চাঁদা:</span><span class="summary-value">${formatCurrency(totalChanda)}</span></div>
-                <div class="summary-item"><span class="summary-label">মোট উসুল:</span><span class="summary-value">${formatCurrency(totalColl)}</span></div>
-                <div class="summary-item"><span class="summary-label">মোট হাদিয়া:</span><span class="summary-value">${formatCurrency(totalHad)}</span></div>
-                <div class="summary-item"><span class="summary-label">পরিশোধিত:</span><span class="summary-value">${toBengaliNumber(paid)}</span></div>
-                <div class="summary-item"><span class="summary-label">বাকি:</span><span class="summary-value">${toBengaliNumber(count-paid)}</span></div>
-                <div class="summary-item"><span class="summary-label">মোট সারি:</span><span class="summary-value">${toBengaliNumber(count)}</span></div>
-            `;
-        } else if (type === 'rashid') {
-            data.forEach(d => total += parseInt(d.amount)||0);
-            summaries.rashid.innerHTML = `<div class="summary-item"><span class="summary-label">মোট রশিদ:</span><span class="summary-value">${toBengaliNumber(count)}টি</span></div>
-                <div class="summary-item"><span class="summary-label">মোট টাকা:</span><span class="summary-value">${formatCurrency(total)}</span></div>
-                <div class="summary-item"><span class="summary-label">গড়:</span><span class="summary-value">${formatCurrency(count?Math.round(total/count):0)}</span></div>`;
-        } else if (type === 'cash') {
-            data.forEach(d => total += parseInt(d.amount)||0);
-            summaries.cash.innerHTML = `<div class="summary-item"><span class="summary-label">মোট ব্যক্তি:</span><span class="summary-value">${toBengaliNumber(count)}</span></div>
-                <div class="summary-item"><span class="summary-label">মোট টাকা:</span><span class="summary-value">${formatCurrency(total)}</span></div>
-                <div class="summary-item"><span class="summary-label">গড়:</span><span class="summary-value">${formatCurrency(count?Math.round(total/count):0)}</span></div>`;
-        } else if (type === 'income') {
-            data.forEach(d => total += parseInt(d.amount)||0);
-            summaries.income.innerHTML = `<div class="summary-item"><span class="summary-label">মোট আয়:</span><span class="summary-value">${formatCurrency(total)}</span></div>
-                <div class="summary-item"><span class="summary-label">আইটেম:</span><span class="summary-value">${toBengaliNumber(count)}</span></div>`;
-        } else if (type === 'expense') {
-            data.forEach(d => total += parseInt(d.amount)||0);
-            summaries.expense.innerHTML = `<div class="summary-item"><span class="summary-label">মোট ব্যয়:</span><span class="summary-value">${formatCurrency(total)}</span></div>
-                <div class="summary-item"><span class="summary-label">আইটেম:</span><span class="summary-value">${toBengaliNumber(count)}</span></div>`;
-        }
-    }
-
-    // ---------- ফিল্টার ফাংশন ----------
-    function filterTable(type, searchTerm) {
-        let rawData, currentFiltered;
-        if (type === 'chanda') rawData = currentChandaData;
-        else if (type === 'rashid') rawData = allRashidData;
-        else if (type === 'cash') rawData = allCashData;
-        else if (type === 'income') rawData = allIncomeData;
-        else rawData = allExpenseData;
-
-        if (!searchTerm.trim()) {
-            if (type === 'chanda') currentFilteredChanda = [...rawData];
-            else if (type === 'rashid') currentFilteredRashid = [...rawData];
-            else if (type === 'cash') currentFilteredCash = [...rawData];
-            else if (type === 'income') currentFilteredIncome = [...rawData];
-            else currentFilteredExpense = [...rawData];
-        } else {
-            let term = searchTerm.toLowerCase();
-            let termEn = toEnglishNumber(term);
-            let filtered = rawData.filter((item, idx) => {
-                let serialBn = toBengaliNumber(idx+1);
-                let serialEn = (idx+1).toString();
-                let matchesSerial = serialBn.includes(term) || serialEn.includes(termEn);
-                if (type === 'chanda') return matchesSerial || item.name.toLowerCase().includes(term);
-                if (type === 'rashid') return matchesSerial || item.name.toLowerCase().includes(term) || (item.rashid_no && item.rashid_no.includes(term));
-                if (type === 'cash') return matchesSerial || item.name.toLowerCase().includes(term);
-                if (type === 'income') return matchesSerial || item.description.toLowerCase().includes(term);
-                return matchesSerial || item.description.toLowerCase().includes(term);
-            });
-            if (type === 'chanda') currentFilteredChanda = filtered;
-            else if (type === 'rashid') currentFilteredRashid = filtered;
-            else if (type === 'cash') currentFilteredCash = filtered;
-            else if (type === 'income') currentFilteredIncome = filtered;
-            else currentFilteredExpense = filtered;
-        }
-
-        // রেন্ডার ও সারাংশ
-        let displayData, renderFn, summaryType;
-        if (type === 'chanda') { displayData = currentFilteredChanda; renderFn = renderChanda; summaryType='chanda'; }
-        else if (type === 'rashid') { displayData = currentFilteredRashid; renderFn = renderRashid; summaryType='rashid'; }
-        else if (type === 'cash') { displayData = currentFilteredCash; renderFn = renderCash; summaryType='cash'; }
-        else if (type === 'income') { displayData = currentFilteredIncome; renderFn = renderIncome; summaryType='income'; }
-        else { displayData = currentFilteredExpense; renderFn = renderExpense; summaryType='expense'; }
-
-        if (displayData.length === 0) {
-            bodies[type].innerHTML = '';
-            noResults[type].style.display = 'block';
-            summaries[type].innerHTML = '';
-        } else {
-            noResults[type].style.display = 'none';
-            renderFn(displayData, searchTerm);
-            updateSummary(summaryType, displayData);
-        }
-    }
-
-    // ---------- শো ফাংশন (বাটন চাপলে) ----------
-    function showChandaArea(area) {
-        titles.chanda.innerText = `${area} – চাঁদার তালিকা`;
-        currentChandaData = allChandaData[area] || [];
-        currentFilteredChanda = [...currentChandaData];
-        searchInputs.chanda.value = '';
-        noResults.chanda.style.display = 'none';
-        if (currentChandaData.length) {
-            renderChanda(currentChandaData);
-            updateSummary('chanda', currentChandaData);
-        } else {
-            bodies.chanda.innerHTML = '<tr><td colspan="6" style="text-align:center;">এই এলাকায় কোনো তথ্য নেই</td></tr>';
-            summaries.chanda.innerHTML = '';
-        }
-        containers.chanda.style.display = 'block';
-        containers.rashid.style.display = 'none'; containers.cash.style.display = 'none';
-        containers.income.style.display = 'none'; containers.expense.style.display = 'none';
-    }
-
-    function showRashid() {
-        titles.rashid.innerText = 'রশিদ বই তালিকা';
-        searchInputs.rashid.value = '';
-        noResults.rashid.style.display = 'none';
-        currentFilteredRashid = [...allRashidData];
-        if (allRashidData.length) { renderRashid(allRashidData); updateSummary('rashid', allRashidData); }
-        else { bodies.rashid.innerHTML = '<tr><td colspan="5">কোন তথ্য নেই</td></tr>'; summaries.rashid.innerHTML = ''; }
-        containers.rashid.style.display = 'block';
-        containers.chanda.style.display = 'none'; containers.cash.style.display = 'none';
-        containers.income.style.display = 'none'; containers.expense.style.display = 'none';
-    }
-
-    function showCash() {
-        titles.cash.innerText = 'ক্যাশ টেবিল';
-        searchInputs.cash.value = '';
-        noResults.cash.style.display = 'none';
-        currentFilteredCash = [...allCashData];
-        if (allCashData.length) { renderCash(allCashData); updateSummary('cash', allCashData); }
-        else { bodies.cash.innerHTML = '<tr><td colspan="4">কোন তথ্য নেই</td></tr>'; summaries.cash.innerHTML = ''; }
-        containers.cash.style.display = 'block';
-        containers.chanda.style.display = 'none'; containers.rashid.style.display = 'none';
-        containers.income.style.display = 'none'; containers.expense.style.display = 'none';
-    }
-
-    function showIncome() {
-        titles.income.innerText = 'আয়-হিসাব';
-        searchInputs.income.value = '';
-        noResults.income.style.display = 'none';
-        currentFilteredIncome = [...allIncomeData];
-        if (allIncomeData.length) { renderIncome(allIncomeData); updateSummary('income', allIncomeData); }
-        else { bodies.income.innerHTML = '<tr><td colspan="3">কোন তথ্য নেই</td></tr>'; summaries.income.innerHTML = ''; }
-        containers.income.style.display = 'block';
-        containers.chanda.style.display = 'none'; containers.rashid.style.display = 'none';
-        containers.cash.style.display = 'none'; containers.expense.style.display = 'none';
-    }
-
-    function showExpense() {
-        titles.expense.innerText = 'ব্যয়-হিসাব';
-        searchInputs.expense.value = '';
-        noResults.expense.style.display = 'none';
-        currentFilteredExpense = [...allExpenseData];
-        if (allExpenseData.length) { renderExpense(allExpenseData); updateSummary('expense', allExpenseData); }
-        else { bodies.expense.innerHTML = '<tr><td colspan="3">কোন তথ্য নেই</td></tr>'; summaries.expense.innerHTML = ''; }
-        containers.expense.style.display = 'block';
-        containers.chanda.style.display = 'none'; containers.rashid.style.display = 'none';
-        containers.cash.style.display = 'none'; containers.income.style.display = 'none';
-    }
-
-    // ---------- ডেটা পার্স (TYPE কলাম) ----------
-    function processSheetData(rows) {
-        // রিসেট
-        for (let k in allChandaData) allChandaData[k] = [];
-        allRashidData = []; allCashData = []; allIncomeData = []; allExpenseData = [];
-
-        rows.forEach(row => {
-            let type = (row.type || row.ধরন || row.Type || '').toString().toLowerCase();
-            if (type.includes('চাঁদা') || type.includes('chanda')) {
-                let area = row.area || row.এলাকা || '';
-                if (area && allChandaData.hasOwnProperty(area)) {
-                    allChandaData[area].push({
-                        name: row.name || row.নাম || '',
-                        chanda: row.chanda || row.চাঁদা || '0',
-                        collection: row.collection || row.উসুল || '0',
-                        hadiya: row.hadiya || row.হাদিয়া || '0',
-                        paid: (row.paid === 'হ্যাঁ' || row.paid === '1' || row.paid === 'true' || row.paid === 'পরিশোধিত') ? true : false
-                    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const areaButtons = document.querySelectorAll('.area-btn');
+            
+            // চাঁদার তালিকা এলিমেন্ট
+            const chandaTableContainer = document.getElementById('chandaTableContainer');
+            const chandaTableTitle = document.getElementById('chandaTableTitle');
+            const chandaTableBody = document.getElementById('chandaTableBody');
+            const printChandaBtn = document.getElementById('printChandaBtn');
+            const chandaLoadingIndicator = document.getElementById('chandaLoadingIndicator');
+            const chandaSummarySection = document.getElementById('chandaSummarySection');
+            const chandaSearchInput = document.getElementById('chandaSearchInput');
+            const chandaNoResults = document.getElementById('chandaNoResults');
+            
+            // রশিদ বই তালিকা এলিমেন্ট
+            const rashidTableContainer = document.getElementById('rashidTableContainer');
+            const rashidTableTitle = document.getElementById('rashidTableTitle');
+            const rashidTableBody = document.getElementById('rashidTableBody');
+            const printRashidBtn = document.getElementById('printRashidBtn');
+            const rashidLoadingIndicator = document.getElementById('rashidLoadingIndicator');
+            const rashidSummarySection = document.getElementById('rashidSummarySection');
+            const rashidSearchInput = document.getElementById('rashidSearchInput');
+            const rashidNoResults = document.getElementById('rashidNoResults');
+            
+            // ক্যাশ টেবিল এলিমেন্ট
+            const cashTableContainer = document.getElementById('cashTableContainer');
+            const cashTableTitle = document.getElementById('cashTableTitle');
+            const cashTableBody = document.getElementById('cashTableBody');
+            const printCashBtn = document.getElementById('printCashBtn');
+            const cashLoadingIndicator = document.getElementById('cashLoadingIndicator');
+            const cashSummarySection = document.getElementById('cashSummarySection');
+            const cashSearchInput = document.getElementById('cashSearchInput');
+            const cashNoResults = document.getElementById('cashNoResults');
+            
+            // আয়-হিসাব এলিমেন্ট
+            const incomeTableContainer = document.getElementById('incomeTableContainer');
+            const incomeTableTitle = document.getElementById('incomeTableTitle');
+            const incomeTableBody = document.getElementById('incomeTableBody');
+            const printIncomeBtn = document.getElementById('printIncomeBtn');
+            const incomeLoadingIndicator = document.getElementById('incomeLoadingIndicator');
+            const incomeSummarySection = document.getElementById('incomeSummarySection');
+            const incomeSearchInput = document.getElementById('incomeSearchInput');
+            const incomeNoResults = document.getElementById('incomeNoResults');
+            
+            // ব্যয়-হিসাব এলিমেন্ট
+            const expenseTableContainer = document.getElementById('expenseTableContainer');
+            const expenseTableTitle = document.getElementById('expenseTableTitle');
+            const expenseTableBody = document.getElementById('expenseTableBody');
+            const printExpenseBtn = document.getElementById('printExpenseBtn');
+            const expenseLoadingIndicator = document.getElementById('expenseLoadingIndicator');
+            const expenseSummarySection = document.getElementById('expenseSummarySection');
+            const expenseSearchInput = document.getElementById('expenseSearchInput');
+            const expenseNoResults = document.getElementById('expenseNoResults');
+            
+            // Google Sheets URL (CSV format)
+            const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6e85SNjq6MWpbd2f9wgFdUBqpQ6lx3FtLxJbWW72rb_elJ9gLXNhRDyELcfVqXYr3_hLxEtZNlrZf/pub?output=csv';
+            
+            // Store all data from Google Sheets
+            let allChandaData = {};
+            let allRashidData = [];
+            let allCashData = [];
+            let allIncomeData = [];
+            let allExpenseData = [];
+            
+            let currentChandaData = [];
+            let currentFilteredChandaData = [];
+            let currentFilteredRashidData = [];
+            let currentFilteredCashData = [];
+            let currentFilteredIncomeData = [];
+            let currentFilteredExpenseData = [];
+            
+            // Convert English digits to Bengali
+            function toBengaliNumber(number) {
+                const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+                
+                return number.toString().split('').map(digit => {
+                    const index = englishDigits.indexOf(digit);
+                    return index !== -1 ? bengaliDigits[index] : digit;
+                }).join('');
+            }
+            
+            // Convert Bengali digits to English
+            function toEnglishNumber(bengaliNum) {
+                const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+                const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                
+                return bengaliNum.toString().split('').map(digit => {
+                    const index = bengaliDigits.indexOf(digit);
+                    return index !== -1 ? englishDigits[index] : digit;
+                }).join('');
+            }
+            
+            // Format number with commas for thousands separator
+            function formatNumberWithCommas(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            
+            // Format number with Bengali commas for thousands separator
+            function formatBengaliNumberWithCommas(number) {
+                const numStr = number.toString();
+                const parts = numStr.split('.');
+                let integerPart = parts[0];
+                let decimalPart = parts.length > 1 ? parts[1] : '';
+                
+                // Add commas for thousands separator
+                integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                
+                // Convert to Bengali digits
+                integerPart = toBengaliNumber(integerPart);
+                
+                // Convert decimal part if exists
+                if (decimalPart) {
+                    decimalPart = toBengaliNumber(decimalPart);
+                    return integerPart + '.' + decimalPart;
                 }
-            } else if (type.includes('রশিদ') || type.includes('rashid')) {
-                allRashidData.push({
-                    name: row.name || row.নাম || '',
-                    rashid_no: row.rashid_no || row.রশিদ || '',
-                    amount: row.amount || row.টাকা || '0',
-                    address: row.address || row.ঠিকানা || ''
+                
+                return integerPart;
+            }
+            
+            // Format currency display with commas
+            function formatCurrency(amount) {
+                const num = parseInt(amount) || 0;
+                return formatBengaliNumberWithCommas(num) + ' টাকা';
+            }
+            
+            // Highlight search term in text
+            function highlightText(text, searchTerm) {
+                if (!searchTerm) return text;
+                
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                return text.replace(regex, '<span class="highlight">$1</span>');
+            }
+
+            // Area button click functionality
+            areaButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const area = this.getAttribute('data-area');
+                    
+                    // Hide all tables first
+                    chandaTableContainer.style.display = 'none';
+                    rashidTableContainer.style.display = 'none';
+                    cashTableContainer.style.display = 'none';
+                    incomeTableContainer.style.display = 'none';
+                    expenseTableContainer.style.display = 'none';
+                    
+                    if (area === "রশিদ বই") {
+                        showRashidData();
+                    } else if (area === "ক্যাশ টেবিল") {
+                        showCashData();
+                    } else if (area === "আয়-হিসাব") {
+                        showIncomeData();
+                    } else if (area === "ব্যয়-হিসাব") {
+                        showExpenseData();
+                    } else {
+                        showChandaAreaData(area);
+                    }
+                    
+                    // Highlight active button
+                    areaButtons.forEach(btn => {
+                        btn.style.opacity = '0.8';
+                        btn.style.boxShadow = '0 8px 20px var(--shadow)';
+                    });
+                    this.style.opacity = '1';
+                    this.style.boxShadow = '0 10px 25px rgba(26, 95, 122, 0.3)';
                 });
-            } else if (type.includes('ক্যাশ') || type.includes('cash')) {
-                allCashData.push({
-                    name: row.name || row.নাম || '',
-                    amount: row.amount || row.টাকা || '0',
-                    address: row.address || row.ঠিকানা || ''
+            });
+
+            // Print buttons functionality
+            printChandaBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            printRashidBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            printCashBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            printIncomeBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            printExpenseBtn.addEventListener('click', function() {
+                window.print();
+            });
+
+            // Search functionality for chanda table
+            chandaSearchInput.addEventListener('input', function() {
+                filterChandaTable(this.value);
+            });
+            
+            // Search functionality for rashid table
+            rashidSearchInput.addEventListener('input', function() {
+                filterRashidTable(this.value);
+            });
+            
+            // Search functionality for cash table
+            cashSearchInput.addEventListener('input', function() {
+                filterCashTable(this.value);
+            });
+            
+            // Search functionality for income table
+            incomeSearchInput.addEventListener('input', function() {
+                filterIncomeTable(this.value);
+            });
+            
+            // Search functionality for expense table
+            expenseSearchInput.addEventListener('input', function() {
+                filterExpenseTable(this.value);
+            });
+
+            // Function to filter chanda table based on search input
+            function filterChandaTable(searchTerm) {
+                if (!searchTerm.trim()) {
+                    // If search is empty, show all data
+                    currentFilteredChandaData = [...currentChandaData];
+                    renderChandaTable(currentFilteredChandaData);
+                    updateChandaSummary(currentFilteredChandaData);
+                    chandaNoResults.style.display = 'none';
+                    chandaTableBody.style.display = '';
+                    chandaSummarySection.style.display = 'grid';
+                    return;
+                }
+                
+                // Convert Bengali numbers in search term to English for comparison
+                const searchTermEnglish = toEnglishNumber(searchTerm);
+                
+                // Filter data based on serial number or name
+                const filteredData = currentChandaData.filter((person, index) => {
+                    const serialBengali = toBengaliNumber(index + 1);
+                    const serialEnglish = (index + 1).toString();
+                    
+                    // Check if search term matches serial number (Bengali or English)
+                    const matchesSerial = serialBengali.includes(searchTerm) || 
+                                         serialEnglish.includes(searchTermEnglish);
+                    
+                    // Check if search term matches name
+                    const matchesName = person.name.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    return matchesSerial || matchesName;
                 });
-            } else if (type.includes('আয়') || type.includes('income')) {
-                allIncomeData.push({
-                    description: row.description || row.বিবরণ || '',
-                    amount: row.amount || row.টাকা || '0'
+                
+                currentFilteredChandaData = filteredData;
+                
+                if (filteredData.length > 0) {
+                    renderChandaTable(filteredData, searchTerm);
+                    updateChandaSummary(filteredData);
+                    chandaNoResults.style.display = 'none';
+                    chandaTableBody.style.display = '';
+                    chandaSummarySection.style.display = 'grid';
+                } else {
+                    chandaTableBody.innerHTML = '';
+                    chandaSummarySection.innerHTML = '';
+                    chandaNoResults.style.display = 'block';
+                    chandaTableBody.style.display = 'none';
+                    chandaSummarySection.style.display = 'none';
+                }
+            }
+            
+            // Function to filter rashid table based on search input
+            function filterRashidTable(searchTerm) {
+                if (!searchTerm.trim()) {
+                    // If search is empty, show all data
+                    currentFilteredRashidData = [...allRashidData];
+                    renderRashidTable(currentFilteredRashidData);
+                    updateRashidSummary(currentFilteredRashidData);
+                    rashidNoResults.style.display = 'none';
+                    rashidTableBody.style.display = '';
+                    rashidSummarySection.style.display = 'grid';
+                    return;
+                }
+                
+                // Convert Bengali numbers in search term to English for comparison
+                const searchTermEnglish = toEnglishNumber(searchTerm);
+                
+                // Filter data based on serial number or name
+                const filteredData = allRashidData.filter((person, index) => {
+                    const serialBengali = toBengaliNumber(index + 1);
+                    const serialEnglish = (index + 1).toString();
+                    
+                    // Check if search term matches serial number (Bengali or English)
+                    const matchesSerial = serialBengali.includes(searchTerm) || 
+                                         serialEnglish.includes(searchTermEnglish);
+                    
+                    // Check if search term matches name
+                    const matchesName = person.name.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    // Check if search term matches rashid number
+                    const matchesRashid = person.rashid_no && 
+                                         (person.rashid_no.includes(searchTerm) || 
+                                          person.rashid_no.includes(searchTermEnglish));
+                    
+                    return matchesSerial || matchesName || matchesRashid;
                 });
-            } else if (type.includes('ব্যয়') || type.includes('expense') || type.includes('খরচ')) {
-                allExpenseData.push({
-                    description: row.description || row.বিবরণ || '',
-                    amount: row.amount || row.টাকা || '0'
+                
+                currentFilteredRashidData = filteredData;
+                
+                if (filteredData.length > 0) {
+                    renderRashidTable(filteredData, searchTerm);
+                    updateRashidSummary(filteredData);
+                    rashidNoResults.style.display = 'none';
+                    rashidTableBody.style.display = '';
+                    rashidSummarySection.style.display = 'grid';
+                } else {
+                    rashidTableBody.innerHTML = '';
+                    rashidSummarySection.innerHTML = '';
+                    rashidNoResults.style.display = 'block';
+                    rashidTableBody.style.display = 'none';
+                    rashidSummarySection.style.display = 'none';
+                }
+            }
+            
+            // Function to filter cash table based on search input
+            function filterCashTable(searchTerm) {
+                if (!searchTerm.trim()) {
+                    // If search is empty, show all data
+                    currentFilteredCashData = [...allCashData];
+                    renderCashTable(currentFilteredCashData);
+                    updateCashSummary(currentFilteredCashData);
+                    cashNoResults.style.display = 'none';
+                    cashTableBody.style.display = '';
+                    cashSummarySection.style.display = 'grid';
+                    return;
+                }
+                
+                // Convert Bengali numbers in search term to English for comparison
+                const searchTermEnglish = toEnglishNumber(searchTerm);
+                
+                // Filter data based on serial number or name
+                const filteredData = allCashData.filter((person, index) => {
+                    const serialBengali = toBengaliNumber(index + 1);
+                    const serialEnglish = (index + 1).toString();
+                    
+                    // Check if search term matches serial number (Bengali or English)
+                    const matchesSerial = serialBengali.includes(searchTerm) || 
+                                         serialEnglish.includes(searchTermEnglish);
+                    
+                    // Check if search term matches name
+                    const matchesName = person.name.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    return matchesSerial || matchesName;
+                });
+                
+                currentFilteredCashData = filteredData;
+                
+                if (filteredData.length > 0) {
+                    renderCashTable(filteredData, searchTerm);
+                    updateCashSummary(filteredData);
+                    cashNoResults.style.display = 'none';
+                    cashTableBody.style.display = '';
+                    cashSummarySection.style.display = 'grid';
+                } else {
+                    cashTableBody.innerHTML = '';
+                    cashSummarySection.innerHTML = '';
+                    cashNoResults.style.display = 'block';
+                    cashTableBody.style.display = 'none';
+                    cashSummarySection.style.display = 'none';
+                }
+            }
+            
+            // Function to filter income table based on search input
+            function filterIncomeTable(searchTerm) {
+                if (!searchTerm.trim()) {
+                    // If search is empty, show all data
+                    currentFilteredIncomeData = [...allIncomeData];
+                    renderIncomeTable(currentFilteredIncomeData);
+                    updateIncomeSummary(currentFilteredIncomeData);
+                    incomeNoResults.style.display = 'none';
+                    incomeTableBody.style.display = '';
+                    incomeSummarySection.style.display = 'grid';
+                    return;
+                }
+                
+                // Convert Bengali numbers in search term to English for comparison
+                const searchTermEnglish = toEnglishNumber(searchTerm);
+                
+                // Filter data based on serial number or description
+                const filteredData = allIncomeData.filter((item, index) => {
+                    const serialBengali = toBengaliNumber(index + 1);
+                    const serialEnglish = (index + 1).toString();
+                    
+                    // Check if search term matches serial number (Bengali or English)
+                    const matchesSerial = serialBengali.includes(searchTerm) || 
+                                         serialEnglish.includes(searchTermEnglish);
+                    
+                    // Check if search term matches description
+                    const matchesDescription = item.description.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    return matchesSerial || matchesDescription;
+                });
+                
+                currentFilteredIncomeData = filteredData;
+                
+                if (filteredData.length > 0) {
+                    renderIncomeTable(filteredData, searchTerm);
+                    updateIncomeSummary(filteredData);
+                    incomeNoResults.style.display = 'none';
+                    incomeTableBody.style.display = '';
+                    incomeSummarySection.style.display = 'grid';
+                } else {
+                    incomeTableBody.innerHTML = '';
+                    incomeSummarySection.innerHTML = '';
+                    incomeNoResults.style.display = 'block';
+                    incomeTableBody.style.display = 'none';
+                    incomeSummarySection.style.display = 'none';
+                }
+            }
+            
+            // Function to filter expense table based on search input
+            function filterExpenseTable(searchTerm) {
+                if (!searchTerm.trim()) {
+                    // If search is empty, show all data
+                    currentFilteredExpenseData = [...allExpenseData];
+                    renderExpenseTable(currentFilteredExpenseData);
+                    updateExpenseSummary(currentFilteredExpenseData);
+                    expenseNoResults.style.display = 'none';
+                    expenseTableBody.style.display = '';
+                    expenseSummarySection.style.display = 'grid';
+                    return;
+                }
+                
+                // Convert Bengali numbers in search term to English for comparison
+                const searchTermEnglish = toEnglishNumber(searchTerm);
+                
+                // Filter data based on serial number or description
+                const filteredData = allExpenseData.filter((item, index) => {
+                    const serialBengali = toBengaliNumber(index + 1);
+                    const serialEnglish = (index + 1).toString();
+                    
+                    // Check if search term matches serial number (Bengali or English)
+                    const matchesSerial = serialBengali.includes(searchTerm) || 
+                                         serialEnglish.includes(searchTermEnglish);
+                    
+                    // Check if search term matches description
+                    const matchesDescription = item.description.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    return matchesSerial || matchesDescription;
+                });
+                
+                currentFilteredExpenseData = filteredData;
+                
+                if (filteredData.length > 0) {
+                    renderExpenseTable(filteredData, searchTerm);
+                    updateExpenseSummary(filteredData);
+                    expenseNoResults.style.display = 'none';
+                    expenseTableBody.style.display = '';
+                    expenseSummarySection.style.display = 'grid';
+                } else {
+                    expenseTableBody.innerHTML = '';
+                    expenseSummarySection.innerHTML = '';
+                    expenseNoResults.style.display = 'block';
+                    expenseTableBody.style.display = 'none';
+                    expenseSummarySection.style.display = 'none';
+                }
+            }
+
+            // Function to render chanda table with data
+            function renderChandaTable(data, searchTerm = '') {
+                chandaTableBody.innerHTML = '';
+                
+                data.forEach((person, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Convert numbers to Bengali for display
+                    const chandaNum = parseInt(person.chanda) || 0;
+                    const collectionNum = parseInt(person.collection) || 0;
+                    const hadiyaNum = parseInt(person.hadiya) || 0;
+                    
+                    // Highlight search term in name if present
+                    let nameDisplay = person.name;
+                    if (searchTerm) {
+                        nameDisplay = highlightText(person.name, searchTerm);
+                    }
+                    
+                    // Get actual serial number from original data
+                    const actualIndex = currentChandaData.indexOf(person);
+                    const serialNumber = actualIndex + 1;
+                    
+                    row.innerHTML = `
+                        <td>${searchTerm ? highlightText(toBengaliNumber(serialNumber), searchTerm) : toBengaliNumber(serialNumber)}</td>
+                        <td>${nameDisplay}</td>
+                        <td>${formatCurrency(chandaNum)}</td>
+                        <td>${formatCurrency(collectionNum)}</td>
+                        <td>${formatCurrency(hadiyaNum)}</td>
+                        <td class="${person.paid ? 'paid' : 'pending'}">
+                            ${person.paid ? 'পরিশোধিত' : 'বাকি'}
+                        </td>
+                    `;
+                    
+                    chandaTableBody.appendChild(row);
                 });
             }
+            
+            // Function to render rashid table with data
+            function renderRashidTable(data, searchTerm = '') {
+                rashidTableBody.innerHTML = '';
+                
+                data.forEach((person, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Convert numbers to Bengali for display
+                    const amountNum = parseInt(person.amount) || 0;
+                    
+                    // Highlight search term in name if present
+                    let nameDisplay = person.name;
+                    let rashidDisplay = person.rashid_no || '';
+                    
+                    if (searchTerm) {
+                        nameDisplay = highlightText(person.name, searchTerm);
+                        rashidDisplay = highlightText(person.rashid_no || '', searchTerm);
+                    }
+                    
+                    // Get actual serial number from original data
+                    const actualIndex = allRashidData.indexOf(person);
+                    const serialNumber = actualIndex + 1;
+                    
+                    row.innerHTML = `
+                        <td>${searchTerm ? highlightText(toBengaliNumber(serialNumber), searchTerm) : toBengaliNumber(serialNumber)}</td>
+                        <td>${nameDisplay}</td>
+                        <td>${rashidDisplay}</td>
+                        <td>${formatCurrency(amountNum)}</td>
+                        <td>${person.address || ''}</td>
+                    `;
+                    
+                    rashidTableBody.appendChild(row);
+                });
+            }
+            
+            // Function to render cash table with data
+            function renderCashTable(data, searchTerm = '') {
+                cashTableBody.innerHTML = '';
+                
+                data.forEach((person, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Convert numbers to Bengali for display
+                    const amountNum = parseInt(person.amount) || 0;
+                    
+                    // Highlight search term in name if present
+                    let nameDisplay = person.name;
+                    
+                    if (searchTerm) {
+                        nameDisplay = highlightText(person.name, searchTerm);
+                    }
+                    
+                    // Get actual serial number from original data
+                    const actualIndex = allCashData.indexOf(person);
+                    const serialNumber = actualIndex + 1;
+                    
+                    row.innerHTML = `
+                        <td>${searchTerm ? highlightText(toBengaliNumber(serialNumber), searchTerm) : toBengaliNumber(serialNumber)}</td>
+                        <td>${nameDisplay}</td>
+                        <td>${formatCurrency(amountNum)}</td>
+                        <td>${person.address || ''}</td>
+                    `;
+                    
+                    cashTableBody.appendChild(row);
+                });
+            }
+            
+            // Function to render income table with data
+            function renderIncomeTable(data, searchTerm = '') {
+                incomeTableBody.innerHTML = '';
+                
+                data.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Convert numbers to Bengali for display
+                    const amountNum = parseInt(item.amount) || 0;
+                    
+                    // Highlight search term in description if present
+                    let descriptionDisplay = item.description || '';
+                    
+                    if (searchTerm) {
+                        descriptionDisplay = highlightText(item.description, searchTerm);
+                    }
+                    
+                    // Get actual serial number from original data
+                    const actualIndex = allIncomeData.indexOf(item);
+                    const serialNumber = actualIndex + 1;
+                    
+                    row.innerHTML = `
+                        <td>${searchTerm ? highlightText(toBengaliNumber(serialNumber), searchTerm) : toBengaliNumber(serialNumber)}</td>
+                        <td>${descriptionDisplay}</td>
+                        <td>${formatCurrency(amountNum)}</td>
+                    `;
+                    
+                    incomeTableBody.appendChild(row);
+                });
+            }
+            
+            // Function to render expense table with data
+            function renderExpenseTable(data, searchTerm = '') {
+                expenseTableBody.innerHTML = '';
+                
+                data.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Convert numbers to Bengali for display
+                    const amountNum = parseInt(item.amount) || 0;
+                    
+                    // Highlight search term in description if present
+                    let descriptionDisplay = item.description || '';
+                    
+                    if (searchTerm) {
+                        descriptionDisplay = highlightText(item.description, searchTerm);
+                    }
+                    
+                    // Get actual serial number from original data
+                    const actualIndex = allExpenseData.indexOf(item);
+                    const serialNumber = actualIndex + 1;
+                    
+                    row.innerHTML = `
+                        <td>${searchTerm ? highlightText(toBengaliNumber(serialNumber), searchTerm) : toBengaliNumber(serialNumber)}</td>
+                        <td>${descriptionDisplay}</td>
+                        <td>${formatCurrency(amountNum)}</td>
+                    `;
+                    
+                    expenseTableBody.appendChild(row);
+                });
+            }
+
+            // Function to update chanda summary based on filtered data
+            function updateChandaSummary(data) {
+                let totalChanda = 0;
+                let totalCollection = 0;
+                let totalHadiya = 0;
+                let paidCount = 0;
+                
+                data.forEach(person => {
+                    const chandaNum = parseInt(person.chanda) || 0;
+                    const collectionNum = parseInt(person.collection) || 0;
+                    const hadiyaNum = parseInt(person.hadiya) || 0;
+                    
+                    totalChanda += chandaNum;
+                    totalCollection += collectionNum;
+                    totalHadiya += hadiyaNum;
+                    if (person.paid) paidCount++;
+                });
+                
+                // Calculate summary
+                const dueCount = data.length - paidCount;
+                
+                // Display summary
+                chandaSummarySection.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">মোট চাঁদার পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalChanda)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট উসুল:</span>
+                        <span class="summary-value">${formatCurrency(totalCollection)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট হাদিয়া:</span>
+                        <span class="summary-value">${formatCurrency(totalHadiya)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">পরিশোধিত ঘর:</span>
+                        <span class="summary-value">${toBengaliNumber(paidCount)}টি</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">বাকি ঘর:</span>
+                        <span class="summary-value">${toBengaliNumber(dueCount)}টি</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট ফলাফল:</span>
+                        <span class="summary-value">${toBengaliNumber(data.length)}টি</span>
+                    </div>
+                `;
+            }
+            
+            // Function to update rashid summary based on filtered data
+            function updateRashidSummary(data) {
+                let totalAmount = 0;
+                let totalCount = data.length;
+                
+                data.forEach(person => {
+                    const amountNum = parseInt(person.amount) || 0;
+                    totalAmount += amountNum;
+                });
+                
+                // Display summary
+                rashidSummarySection.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">মোট রশিদ:</span>
+                        <span class="summary-value">${toBengaliNumber(totalCount)}টি</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট টাকার পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalAmount)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">গড় টাকার পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalCount > 0 ? Math.round(totalAmount / totalCount) : 0)}</span>
+                    </div>
+                `;
+            }
+            
+            // Function to update cash summary based on filtered data
+            function updateCashSummary(data) {
+                let totalAmount = 0;
+                let totalCount = data.length;
+                
+                data.forEach(person => {
+                    const amountNum = parseInt(person.amount) || 0;
+                    totalAmount += amountNum;
+                });
+                
+                // Display summary
+                cashSummarySection.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">মোট ব্যক্তি:</span>
+                        <span class="summary-value">${toBengaliNumber(totalCount)} জন</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট টাকার পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalAmount)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">গড় টাকার পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalCount > 0 ? Math.round(totalAmount / totalCount) : 0)}</span>
+                    </div>
+                `;
+            }
+            
+            // Function to update income summary based on filtered data
+            function updateIncomeSummary(data) {
+                let totalAmount = 0;
+                let totalCount = data.length;
+                
+                data.forEach(item => {
+                    const amountNum = parseInt(item.amount) || 0;
+                    totalAmount += amountNum;
+                });
+                
+                // Display summary
+                incomeSummarySection.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">মোট আয়ের আইটেম:</span>
+                        <span class="summary-value">${toBengaliNumber(totalCount)}টি</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট আয়ের পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalAmount)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">গড় আয়ের পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalCount > 0 ? Math.round(totalAmount / totalCount) : 0)}</span>
+                    </div>
+                `;
+            }
+            
+            // Function to update expense summary based on filtered data
+            function updateExpenseSummary(data) {
+                let totalAmount = 0;
+                let totalCount = data.length;
+                
+                data.forEach(item => {
+                    const amountNum = parseInt(item.amount) || 0;
+                    totalAmount += amountNum;
+                });
+                
+                // Display summary
+                expenseSummarySection.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">মোট ব্যয়ের আইটেম:</span>
+                        <span class="summary-value">${toBengaliNumber(totalCount)}টি</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">মোট ব্যয়ের পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalAmount)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">গড় ব্যয়ের পরিমাণ:</span>
+                        <span class="summary-value">${formatCurrency(totalCount > 0 ? Math.round(totalAmount / totalCount) : 0)}</span>
+                    </div>
+                `;
+            }
+
+            // Function to load data from Google Sheets
+            function loadDataFromGoogleSheets() {
+                chandaLoadingIndicator.style.display = 'flex';
+                rashidLoadingIndicator.style.display = 'flex';
+                cashLoadingIndicator.style.display = 'flex';
+                incomeLoadingIndicator.style.display = 'flex';
+                expenseLoadingIndicator.style.display = 'flex';
+                
+                Papa.parse(sheetURL, {
+                    download: true,
+                    header: true,
+                    complete: function(results) {
+                        chandaLoadingIndicator.style.display = 'none';
+                        rashidLoadingIndicator.style.display = 'none';
+                        cashLoadingIndicator.style.display = 'none';
+                        incomeLoadingIndicator.style.display = 'none';
+                        expenseLoadingIndicator.style.display = 'none';
+                        
+                        if (results.data && results.data.length > 0) {
+                            console.log('Data loaded from Google Sheets:', results.data);
+                            processSheetData(results.data);
+                            // Show first area by default
+                            showChandaAreaData('সৈয়দ পাড়া');
+                            // Highlight first button
+                            areaButtons[0].style.opacity = '1';
+                            areaButtons[0].style.boxShadow = '0 10px 25px rgba(26, 95, 122, 0.3)';
+                        } else {
+                            alert('ডেটা লোড করতে সমস্যা হচ্ছে। পরে আবার চেষ্টা করুন।');
+                        }
+                    },
+                    error: function(error) {
+                        chandaLoadingIndicator.style.display = 'none';
+                        rashidLoadingIndicator.style.display = 'none';
+                        cashLoadingIndicator.style.display = 'none';
+                        incomeLoadingIndicator.style.display = 'none';
+                        expenseLoadingIndicator.style.display = 'none';
+                        alert('ডেটা লোড করতে সমস্যা হচ্ছে: ' + error.message);
+                        console.error('Error loading data:', error);
+                    }
+                });
+            }
+
+            // Process the sheet data using TYPE column method
+            function processSheetData(data) {
+                // Initialize all chanda data areas
+                allChandaData = {
+                    "সৈয়দ পাড়া": [],
+                    "শেখ পাড়া": [],
+                    "ওয়ালি হাজ্বির বাড়ি": [],
+                    "কোরবান আলী হাজ্বির বাড়ি": [],
+                    "হাবিবিয়া পাড়া": [],
+                    "নাছির তালুকদার বাড়ি": [],
+                    "তমিজ উদ্দিন মুন্সির বাড়ি": []
+                };
+                
+                // Reset other data arrays
+                allRashidData = [];
+                allCashData = [];
+                allIncomeData = [];
+                allExpenseData = [];
+                
+                console.log('Processing sheet data using TYPE column method...');
+                
+                data.forEach((row, index) => {
+                    // Log first few rows for debugging
+                    if (index < 3) {
+                        console.log(`Row ${index}:`, row);
+                    }
+                    
+                    // Get the type of data (using multiple possible column names)
+                    const type = row.type || row.ধরন || row.Type || row.dhoron || '';
+                    
+                    // Process based on type
+                    if (type.toLowerCase().includes('চাঁদা') || type.toLowerCase().includes('chanda')) {
+                        // Process as chanda data
+                        const area = row.area || row.এলাকা || row.Area || '';
+                        const name = row.name || row.নাম || row.Name || '';
+                        const chanda = row.chanda || row.চাঁদা || row.Chanda || '0';
+                        const collection = row.collection || row.উসুল || row.Collection || row.সংগ্রহ || '0';
+                        const hadiya = row.hadiya || row.হাদিয়া || row.হাদিয়া || row.Hadiya || '0';
+                        const paid = row.paid || row.পরিশোধ || row.Paid || row.status || row.Status || '';
+                        
+                        // Check if area exists in our predefined list
+                        if (area && allChandaData.hasOwnProperty(area)) {
+                            allChandaData[area].push({
+                                name: name,
+                                chanda: chanda,
+                                collection: collection,
+                                hadiya: hadiya,
+                                paid: (paid && (paid.toLowerCase().includes('হ্যাঁ') || 
+                                                paid.toLowerCase().includes('yes') || 
+                                                paid.toLowerCase().includes('true') || 
+                                                paid.toLowerCase().includes('পরিশোধিত') || 
+                                                paid === '1' || 
+                                                paid === '১')) ? true : false
+                            });
+                        } else {
+                            console.warn(`Area "${area}" not found in predefined list for row ${index}`);
+                        }
+                    } 
+                    else if (type.toLowerCase().includes('রশিদ') || type.toLowerCase().includes('rashid')) {
+                        // Process as rashid data
+                        const name = row.name || row.নাম || row.Name || '';
+                        const rashid_no = row.rashid_no || row.rashid || row.রশিদ || row['রশিদ নং'] || row['রশিদ বই নং'] || '';
+                        const amount = row.amount || row.taka || row.টাকা || row['টাকার পরিমাণ'] || '0';
+                        const address = row.address || row.ঠিকানা || row.Address || '';
+                        
+                        allRashidData.push({
+                            name: name,
+                            rashid_no: rashid_no,
+                            amount: amount,
+                            address: address
+                        });
+                    }
+                    else if (type.toLowerCase().includes('ক্যাশ') || type.toLowerCase().includes('cash')) {
+                        // Process as cash data
+                        const name = row.name || row.নাম || row.Name || '';
+                        const amount = row.amount || row.taka || row.টাকা || row['টাকার পরিমাণ'] || '0';
+                        const address = row.address || row.ঠিকানা || row.Address || '';
+                        
+                        allCashData.push({
+                            name: name,
+                            amount: amount,
+                            address: address
+                        });
+                    }
+                    else if (type.toLowerCase().includes('আয়') || type.toLowerCase().includes('income')) {
+                        // Process as income data
+                        const description = row.description || row.biboron || row.bibaran || row.বিবরণ || '';
+                        const amount = row.amount || row.taka || row.টাকা || row['টাকার পরিমাণ'] || '0';
+                        
+                        allIncomeData.push({
+                            description: description,
+                            amount: amount
+                        });
+                    }
+                    else if (type.toLowerCase().includes('ব্যয়') || type.toLowerCase().includes('expense') || 
+                             type.toLowerCase().includes('খরচ') || type.toLowerCase().includes('expenditure')) {
+                        // Process as expense data
+                        const description = row.description || row.biboron || row.bibaran || row.বিবরণ || '';
+                        const amount = row.amount || row.taka || row.টাকা || row['টাকার পরিমাণ'] || '0';
+                        
+                        allExpenseData.push({
+                            description: description,
+                            amount: amount
+                        });
+                    }
+                    else if (!type && row.name && row.area) {
+                        // If no type specified but has name and area, assume it's chanda data
+                        const area = row.area || row.এলাকা || row.Area || '';
+                        const name = row.name || row.নাম || row.Name || '';
+                        const chanda = row.chanda || row.চাঁদা || row.Chanda || '0';
+                        const collection = row.collection || row.উসুল || row.Collection || row.সংগ্রহ || '0';
+                        const hadiya = row.hadiya || row.হাদিয়া || row.হাদিয়া || row.Hadiya || '0';
+                        const paid = row.paid || row.পরিশোধ || row.Paid || row.status || row.Status || '';
+                        
+                        if (area && allChandaData.hasOwnProperty(area)) {
+                            allChandaData[area].push({
+                                name: name,
+                                chanda: chanda,
+                                collection: collection,
+                                hadiya: hadiya,
+                                paid: (paid && (paid.toLowerCase().includes('হ্যাঁ') || 
+                                                paid.toLowerCase().includes('yes') || 
+                                                paid.toLowerCase().includes('true') || 
+                                                paid.toLowerCase().includes('পরিশোধিত') || 
+                                                paid === '1' || 
+                                                paid === '১')) ? true : false
+                            });
+                        }
+                    }
+                });
+                
+                console.log('Processed data summary:');
+                console.log('- Chanda data:', Object.keys(allChandaData).map(key => `${key}: ${allChandaData[key].length}`));
+                console.log('- Rashid data:', allRashidData.length);
+                console.log('- Cash data:', allCashData.length);
+                console.log('- Income data:', allIncomeData.length);
+                console.log('- Expense data:', allExpenseData.length);
+            }
+
+            // Function to show chanda area data in table
+            function showChandaAreaData(area) {
+                chandaTableTitle.textContent = `${area} - চাঁদার তালিকা`;
+                chandaSearchInput.value = ''; // Clear search input
+                chandaNoResults.style.display = 'none';
+                chandaTableBody.style.display = '';
+                chandaSummarySection.style.display = 'grid';
+                
+                if (!allChandaData[area] || allChandaData[area].length === 0) {
+                    chandaTableBody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 30px; color: var(--warning);">এই এলাকার জন্য কোন ডেটা পাওয়া যায়নি</td></tr>';
+                    chandaSummarySection.innerHTML = '';
+                    chandaTableContainer.style.display = 'block';
+                    return;
+                }
+                
+                currentChandaData = allChandaData[area];
+                currentFilteredChandaData = [...currentChandaData];
+                
+                renderChandaTable(currentChandaData);
+                updateChandaSummary(currentChandaData);
+                
+                chandaTableContainer.style.display = 'block';
+                rashidTableContainer.style.display = 'none';
+                cashTableContainer.style.display = 'none';
+                incomeTableContainer.style.display = 'none';
+                expenseTableContainer.style.display = 'none';
+                
+                // Scroll to table smoothly
+                setTimeout(() => {
+                    chandaTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            
+            // Function to show rashid data in table
+            function showRashidData() {
+                rashidTableTitle.textContent = 'রশিদ বই তালিকা';
+                rashidSearchInput.value = ''; // Clear search input
+                rashidNoResults.style.display = 'none';
+                rashidTableBody.style.display = '';
+                rashidSummarySection.style.display = 'grid';
+                
+                if (allRashidData.length === 0) {
+                    rashidTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 30px; color: var(--warning);">রশিদ বইয়ের কোন ডেটা পাওয়া যায়নি</td></tr>';
+                    rashidSummarySection.innerHTML = '';
+                    rashidTableContainer.style.display = 'block';
+                    return;
+                }
+                
+                currentFilteredRashidData = [...allRashidData];
+                
+                renderRashidTable(allRashidData);
+                updateRashidSummary(allRashidData);
+                
+                chandaTableContainer.style.display = 'none';
+                rashidTableContainer.style.display = 'block';
+                cashTableContainer.style.display = 'none';
+                incomeTableContainer.style.display = 'none';
+                expenseTableContainer.style.display = 'none';
+                
+                // Scroll to table smoothly
+                setTimeout(() => {
+                    rashidTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            
+            // Function to show cash data in table
+            function showCashData() {
+                cashTableTitle.textContent = 'ক্যাশ টেবিল তালিকা';
+                cashSearchInput.value = ''; // Clear search input
+                cashNoResults.style.display = 'none';
+                cashTableBody.style.display = '';
+                cashSummarySection.style.display = 'grid';
+                
+                if (allCashData.length === 0) {
+                    cashTableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 30px; color: var(--warning);">ক্যাশ টেবিলের কোন ডেটা পাওয়া যায়নি</td></tr>';
+                    cashSummarySection.innerHTML = '';
+                    cashTableContainer.style.display = 'block';
+                    return;
+                }
+                
+                currentFilteredCashData = [...allCashData];
+                
+                renderCashTable(allCashData);
+                updateCashSummary(allCashData);
+                
+                chandaTableContainer.style.display = 'none';
+                rashidTableContainer.style.display = 'none';
+                cashTableContainer.style.display = 'block';
+                incomeTableContainer.style.display = 'none';
+                expenseTableContainer.style.display = 'none';
+                
+                // Scroll to table smoothly
+                setTimeout(() => {
+                    cashTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            
+            // Function to show income data in table
+            function showIncomeData() {
+                incomeTableTitle.textContent = 'আয়-হিসাব তালিকা';
+                incomeSearchInput.value = ''; // Clear search input
+                incomeNoResults.style.display = 'none';
+                incomeTableBody.style.display = '';
+                incomeSummarySection.style.display = 'grid';
+                
+                if (allIncomeData.length === 0) {
+                    incomeTableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; padding: 30px; color: var(--warning);">আয়-হিসাবের কোন ডেটা পাওয়া যায়নি</td></tr>';
+                    incomeSummarySection.innerHTML = '';
+                    incomeTableContainer.style.display = 'block';
+                    return;
+                }
+                
+                currentFilteredIncomeData = [...allIncomeData];
+                
+                renderIncomeTable(allIncomeData);
+                updateIncomeSummary(allIncomeData);
+                
+                chandaTableContainer.style.display = 'none';
+                rashidTableContainer.style.display = 'none';
+                cashTableContainer.style.display = 'none';
+                incomeTableContainer.style.display = 'block';
+                expenseTableContainer.style.display = 'none';
+                
+                // Scroll to table smoothly
+                setTimeout(() => {
+                    incomeTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            
+            // Function to show expense data in table
+            function showExpenseData() {
+                expenseTableTitle.textContent = 'ব্যয়-হিসাব তালিকা';
+                expenseSearchInput.value = ''; // Clear search input
+                expenseNoResults.style.display = 'none';
+                expenseTableBody.style.display = '';
+                expenseSummarySection.style.display = 'grid';
+                
+                if (allExpenseData.length === 0) {
+                    expenseTableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; padding: 30px; color: var(--warning);">ব্যয়-হিসাবের কোন ডেটা পাওয়া যায়নি</td></tr>';
+                    expenseSummarySection.innerHTML = '';
+                    expenseTableContainer.style.display = 'block';
+                    return;
+                }
+                
+                currentFilteredExpenseData = [...allExpenseData];
+                
+                renderExpenseTable(allExpenseData);
+                updateExpenseSummary(allExpenseData);
+                
+                chandaTableContainer.style.display = 'none';
+                rashidTableContainer.style.display = 'none';
+                cashTableContainer.style.display = 'none';
+                incomeTableContainer.style.display = 'none';
+                expenseTableContainer.style.display = 'block';
+                
+                // Scroll to table smoothly
+                setTimeout(() => {
+                    expenseTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+
+            // Load data from Google Sheets when page loads
+            loadDataFromGoogleSheets();
         });
-    }
-
-    // ---------- গুগল শিট লোড ----------
-    function loadFromSheets() {
-        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6e85SNjq6MWpbd2f9wgFdUBqpQ6lx3FtLxJbWW72rb_elJ9gLXNhRDyELcfVqXYr3_hLxEtZNlrZf/pub?output=csv';
-        Papa.parse(sheetURL, { download: true, header: true, complete: (res) => {
-            processSheetData(res.data);
-            // ডিফল্ট প্রথম এলাকা দেখাও
-            showChandaArea('সৈয়দ পাড়া');
-            document.querySelector('.area-btn')?.classList.add('active');
-        }, error: (e) => { alert('ডেটা লোডে সমস্যা: '+e); } });
-    }
-
-    // ---------- ইভেন্ট লিসেনার ----------
-    document.querySelectorAll('.area-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            let area = this.dataset.area;
-            if (area === 'রশিদ বই') showRashid();
-            else if (area === 'ক্যাশ টেবিল') showCash();
-            else if (area === 'আয়-হিসাব') showIncome();
-            else if (area === 'ব্যয়-হিসাব') showExpense();
-            else showChandaArea(area);
-        });
-    });
-
-    // সার্চ ইভেন্ট
-    searchInputs.chanda.addEventListener('input', e => filterTable('chanda', e.target.value));
-    searchInputs.rashid.addEventListener('input', e => filterTable('rashid', e.target.value));
-    searchInputs.cash.addEventListener('input', e => filterTable('cash', e.target.value));
-    searchInputs.income.addEventListener('input', e => filterTable('income', e.target.value));
-    searchInputs.expense.addEventListener('input', e => filterTable('expense', e.target.value));
-
-    // প্রিন্ট বাটন (সকল কন্টেইনারের জন্য)
-    document.getElementById('printChandaBtn').addEventListener('click', () => window.print());
-    document.getElementById('printRashidBtn').addEventListener('click', () => window.print());
-    document.getElementById('printCashBtn').addEventListener('click', () => window.print());
-    document.getElementById('printIncomeBtn').addEventListener('click', () => window.print());
-    document.getElementById('printExpenseBtn').addEventListener('click', () => window.print());
-
-    // শুরু
-    loadFromSheets();
-})();
-</script>
+    </script>
 </body>
 </html>
