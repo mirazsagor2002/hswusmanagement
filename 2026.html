@@ -729,7 +729,7 @@
                 background: white;
                 padding: 0;
                 margin: 0;
-                font-size: 8pt; /* বেস ফন্ট সাইজ ছোট করা হয়েছে */
+                font-size: 8pt;
             }
             
             header, .buttons-grid, footer, .search-container, .print-btn, .logo-container, .date, .chanda-text {
@@ -740,6 +740,7 @@
                 display: none !important;
             }
             
+            /* সকল টেবিল কন্টেইনার প্রিন্টে দেখাবে */
             .table-container {
                 display: block !important;
                 position: relative;
@@ -753,6 +754,15 @@
                 margin: 0;
                 overflow-x: visible;
                 page-break-after: always;
+            }
+            
+            /* নির্দিষ্ট কন্টেইনারগুলোর জন্য পৃথক নিয়ম */
+            #chandaTableContainer,
+            #rashidTableContainer,
+            #cashTableContainer,
+            #incomeTableContainer,
+            #expenseTableContainer {
+                display: block !important;
             }
             
             .table-container::before {
@@ -804,7 +814,7 @@
                 border-collapse: collapse;
                 width: 100%;
                 page-break-inside: auto;
-                font-size: 8pt; /* টেবিলের ফন্ট সাইজ ছোট */
+                font-size: 8pt;
                 line-height: 1.2;
                 margin-bottom: 10px;
             }
@@ -826,14 +836,14 @@
                 background: #e0e0e0 !important;
                 color: black !important;
                 font-weight: bold;
-                padding: 4px 3px; /* প্যাডিং কমিয়ে দেওয়া হয়েছে */
+                padding: 4px 3px;
                 font-size: 8pt;
                 white-space: nowrap;
             }
             
             td {
-                padding: 3px 3px; /* প্যাডিং কমিয়ে দেওয়া হয়েছে */
-                font-size: 7.5pt; /* সেলের ফন্ট সাইজ আরও ছোট */
+                padding: 3px 3px;
+                font-size: 7.5pt;
                 border: 1px solid #ccc;
             }
             
@@ -857,46 +867,35 @@
                 display: table-footer-group;
             }
             
-            /* টেবিলের কলামের প্রস্থ সামঞ্জস্য */
-            th:first-child, td:first-child {
-                width: 5%;
-            }
+            /* চাঁদা টেবিলের কলাম প্রস্থ */
+            #chandaTable th:first-child, #chandaTable td:first-child { width: 5%; }
+            #chandaTable th:nth-child(2), #chandaTable td:nth-child(2) { width: 30%; }
+            #chandaTable th:nth-child(3), #chandaTable td:nth-child(3),
+            #chandaTable th:nth-child(4), #chandaTable td:nth-child(4),
+            #chandaTable th:nth-child(5), #chandaTable td:nth-child(5) { width: 15%; }
+            #chandaTable th:last-child, #chandaTable td:last-child { width: 10%; }
             
-            th:nth-child(2), td:nth-child(2) {
-                width: 30%;
-            }
-            
-            th:nth-child(3), td:nth-child(3),
-            th:nth-child(4), td:nth-child(4),
-            th:nth-child(5), td:nth-child(5) {
-                width: 15%;
-            }
-            
-            th:last-child, td:last-child {
-                width: 10%;
-            }
-            
-            /* রশিদ টেবিলের জন্য */
-            #rashidTable th:nth-child(1), #rashidTable td:nth-child(1) { width: 5%; }
+            /* রশিদ টেবিলের কলাম প্রস্থ */
+            #rashidTable th:first-child, #rashidTable td:first-child { width: 5%; }
             #rashidTable th:nth-child(2), #rashidTable td:nth-child(2) { width: 25%; }
             #rashidTable th:nth-child(3), #rashidTable td:nth-child(3) { width: 15%; }
             #rashidTable th:nth-child(4), #rashidTable td:nth-child(4) { width: 15%; }
             #rashidTable th:nth-child(5), #rashidTable td:nth-child(5) { width: 40%; }
             
-            /* ক্যাশ টেবিলের জন্য */
-            #cashTable th:nth-child(1), #cashTable td:nth-child(1) { width: 5%; }
+            /* ক্যাশ টেবিলের কলাম প্রস্থ */
+            #cashTable th:first-child, #cashTable td:first-child { width: 5%; }
             #cashTable th:nth-child(2), #cashTable td:nth-child(2) { width: 35%; }
             #cashTable th:nth-child(3), #cashTable td:nth-child(3) { width: 20%; }
             #cashTable th:nth-child(4), #cashTable td:nth-child(4) { width: 40%; }
             
-            /* আয়-ব্যয় টেবিলের জন্য */
-            #incomeTable th:nth-child(1), #incomeTable td:nth-child(1),
-            #expenseTable th:nth-child(1), #expenseTable td:nth-child(1) { width: 5%; }
+            /* আয় টেবিলের কলাম প্রস্থ */
+            #incomeTable th:first-child, #incomeTable td:first-child { width: 5%; }
+            #incomeTable th:nth-child(2), #incomeTable td:nth-child(2) { width: 70%; }
+            #incomeTable th:nth-child(3), #incomeTable td:nth-child(3) { width: 25%; }
             
-            #incomeTable th:nth-child(2), #incomeTable td:nth-child(2),
+            /* ব্যয় টেবিলের কলাম প্রস্থ */
+            #expenseTable th:first-child, #expenseTable td:first-child { width: 5%; }
             #expenseTable th:nth-child(2), #expenseTable td:nth-child(2) { width: 70%; }
-            
-            #incomeTable th:nth-child(3), #incomeTable td:nth-child(3),
             #expenseTable th:nth-child(3), #expenseTable td:nth-child(3) { width: 25%; }
         }
 
@@ -1455,17 +1454,37 @@
             function handlePrint(containerId, titleText) {
                 const container = document.getElementById(containerId);
                 if (container) {
-                    // বর্তমানে ফিল্টার করা ডেটা প্রিন্ট করার জন্য
+                    // নিশ্চিত করা যে সঠিক কন্টেইনার প্রিন্ট হবে
+                    const allContainers = document.querySelectorAll('.table-container');
+                    allContainers.forEach(c => {
+                        c.style.display = 'none';
+                    });
+                    
+                    // শুধু যে কন্টেইনার থেকে প্রিন্ট করা হচ্ছে সেটা দেখানো
+                    container.style.display = 'block';
+                    
+                    // প্রিন্ট টাইটেল সেট করা
                     const printTitle = titleText;
                     const originalTitle = document.title;
                     document.title = printTitle;
                     
-                    // প্রিন্ট কমান্ড
-                    window.print();
-                    
-                    // প্রিন্ট শেষে মূল টাইটেল পুনরুদ্ধার
+                    // সামান্য বিলম্বে প্রিন্ট করা
                     setTimeout(() => {
-                        document.title = originalTitle;
+                        window.print();
+                        
+                        // প্রিন্ট শেষে মূল অবস্থায় ফিরিয়ে আনা
+                        setTimeout(() => {
+                            document.title = originalTitle;
+                            
+                            // আবার মূল কন্টেইনার দেখানো
+                            const activeArea = document.querySelector('.area-btn[style*="opacity: 1"]');
+                            if (activeArea) {
+                                activeArea.click();
+                            } else {
+                                // ডিফল্ট হিসেবে প্রথম বাটন সক্রিয় করা
+                                areaButtons[0].click();
+                            }
+                        }, 100);
                     }, 100);
                 }
             }
